@@ -1,6 +1,7 @@
 #!/bin/sh -e
-echo Clonine repo...
+echo Cloning repo...
 git clone https://github.com/IO500/io500
+script_path=$(readlink -f $(dirname "$0"))
 cd io500/
 
 echo Load modules
@@ -18,7 +19,11 @@ echo Fix linker flags
 sed -i "s|^LDFLAGS=\"\"$|LDFLAGS=\"$(mpicxx -showme:link)\"|" build/pfind/compile.sh
 
 echo Compiling, second pass...
-./prepare.sh 
+./prepare.sh
+
+ls -l --color io500
+
+echo Applying patch
+git am "$script_path/0001-modify-io500-script-to-write-and-read-from-scratch-d.patch"
 
 echo && echo $(tput bold && tput setaf 3)Tada!$(tput sgr0)
-ls -l --color io500

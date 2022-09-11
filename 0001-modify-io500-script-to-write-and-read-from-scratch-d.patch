@@ -1,0 +1,90 @@
+From b604cdf3c0b038b320d6701f005ed413e6ba9380 Mon Sep 17 00:00:00 2001
+From: Matthew Mikhailov <mlmikhai@ucsd.edu>
+Date: Sun, 11 Sep 2022 13:02:19 -0700
+Subject: [PATCH] modify io500 script to write and read from scratch disk
+
+---
+ config-expanse-template.ini | 10 ++++++++++
+ io500.sh                    | 30 ++++++++++++++++++++++++------
+ 2 files changed, 34 insertions(+), 6 deletions(-)
+ create mode 100644 config-expanse-template.ini
+
+diff --git a/config-expanse-template.ini b/config-expanse-template.ini
+new file mode 100644
+index 0000000..1e4b977
+--- /dev/null
++++ b/config-expanse-template.ini
+@@ -0,0 +1,10 @@
++[global]
++datadir = /scratch/mlmikhai/job_$SLURM_JOB_ID/io500-data
++resultdir = /scratch/mlmikhai/job_$SLURM_JOB_ID/io500-results
++timestamp-datadir = FALSE
++timestamp-resultdir = FALSE
++
++[debug]
++stonewall-time = 1
++pause-dir = ./pause/
++
+diff --git a/io500.sh b/io500.sh
+index 5f0bb89..2e85f0f 100755
+--- a/io500.sh
++++ b/io500.sh
+@@ -1,6 +1,22 @@
+ #!/bin/bash
+-#SBATCH --nodes=10 --ntasks-per-node=6 -p compute -A ku0598
+-
++#SBATCH --job-name="io500"
++#SBATCH --output="io500.%j.%N.out"
++#SBATCH --partition=compute
++#SBATCH --nodes=1
++#SBATCH --ntasks-per-node=128
++#SBATCH --export=ALL
++#SBATCH -t 00:04:00
++#SBATCH -A sds173
++
++## Environment
++module purge
++module load slurm
++module load cpu
++module load gcc/10.2.0
++module load openmpi/4.0.4
++
++
++## Use srun to run the job
+ # INSTRUCTIONS:
+ #
+ # The only parts of the script that may need to be modified are:
+@@ -10,9 +26,11 @@
+ # This file contains details of your system hardware for your submission.
+ 
+ # This script takes its parameters from the same .ini file as io500 binary.
+-io500_ini="$1"          # You can set the ini file here
+-io500_mpirun="mpiexec"
+-io500_mpiargs="-np 2"
++sed "s/\$SLURM_JOB_ID/$SLURM_JOB_ID/g" $1 > config_$SLURM_JOB_ID.ini
++
++io500_ini="config_$SLURM_JOB_ID.ini"          # You can set the ini file here
++io500_mpirun="srun"
++io500_mpiargs="--mpi=pmi2 -n 128 --cpu-bind=rank"
+ 
+ function setup(){
+   local workdir="$1"
+@@ -76,7 +94,6 @@ function get_ini_global_param() {
+ 
+   val=$(get_ini_section_param global $param |
+   	sed -e 's/[Ff][Aa][Ll][Ss][Ee]/False/' -e 's/[Tt][Rr][Uu][Ee]/True/')
+-
+   echo "${val:-$default}"
+ }
+ 
+@@ -117,6 +134,7 @@ function main {
+   fi
+ 
+   create_tarball
++  rm $SLURM_SUBMIT_DIR/config_$SLURM_JOB_ID.ini
+ }
+ 
+ main
+-- 
+2.27.0
+
