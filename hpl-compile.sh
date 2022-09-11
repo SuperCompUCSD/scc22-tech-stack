@@ -10,9 +10,11 @@ echo Configuring Makefiles...
 sed -i "s|^TOPdir.*|TOPdir = $PWD|g" Make.GCC.OpenMPI_BLIS
 
 echo Loading modules...
-module reset
+module purge
+module load cpu
 module load gcc
 module load openmpi
+module load DefaultModules
 
 echo Compiling...
 make arch=GCC.OpenMPI_BLIS
