@@ -20,4 +20,4 @@ echo ---
 echo "Running NPBench (it takes long just be patient)"
 echo "You might want to get a gpu to run this, but it also works on login node"
 echo "Remember to nice -n 19 $0 if running on login node!"
-time python quickstart.py
+\time python quickstart.py
