@@ -13,9 +13,7 @@ cd npbench
 echo ---
 echo Setting up modules
 module purge
-ml cpu
-ml gcc
-ml python
+module load cpu gcc python
 
 echo ---
 echo Starting the Python venv
@@ -34,4 +32,4 @@ echo "Installing numba (necessary but not mentioned in instructions)"
 pip install numba
 
 echo ---
-echo Done
+echo Installed npbench
