@@ -1,0 +1,11 @@
+[Unit]
+Description=high temperature monitoring and automatic shutdown
+After=syslog.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/high-temp-auto-shutdown -t 40 -i 5 -g 15
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
