@@ -33,7 +33,7 @@ fn main() -> anyhow::Result<()> {
 	loop {
 		match check_temp() {
 			Ok(temp) => {
-				if temp >= args.trigger {
+				if temp >= args.trigger && !scheduled {
 					let warning = &format!(
 						"Inlet (room) temperature reached {temp} C!  \
 						To stop monitoring, run \"systemctl stop high-temp-auto-shutdown\".",
