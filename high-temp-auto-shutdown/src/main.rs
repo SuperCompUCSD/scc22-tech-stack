@@ -53,7 +53,7 @@ fn main() -> anyhow::Result<()> {
 						}
 						Err(e) => eprintln!("Failed to schedule shutdown: {e}"),
 					}
-				} else {
+				} else if temp < args.trigger {
 					eprintln!("Temperature okay: {temp} C");
 					if scheduled {
 						scheduled = false;
@@ -63,6 +63,8 @@ fn main() -> anyhow::Result<()> {
 							Err(e) => eprintln!("Failed to cancel shutdown: {e}"),
 						}
 					}
+				} else {
+					eprintln!("Temperature over limit, shutdown scheduled: {temp} C");
 				}
 			}
 			Err(e) => eprintln!("Failed to check temperature: {:#}", e),
