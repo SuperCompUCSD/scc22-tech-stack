@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  prometheus:
+      image: prom/prometheus:latest
+      container_name: prometheus
+      restart: unless-stopped
+      volumes:
+              - ./data/prometheus:/prometheus
+              - ./prometheus:/etc/prometheus
+      command:
+        - '--config.file=/etc/prometheus/prometheus.yml'
+        - '--storage.tsdb.path=/prometheus'
+        - '--web.console.libraries=/etc/prometheus/console_libraries'
+        - '--web.console.templates=/etc/prometheus/consoles'
+        - '--web.enable-lifecycle'
+      expose:
+        - 9090
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    expose:
+      - 9100
+
+  grafana:
+      container_name: grafana
+      image: grafana/grafana:latest
+      environment:
+          - GF_SECURITY_ADMIN_PASSWORD=password
+          - GF_AUTH_ANONYMOUS_ENABLED=true
+          - GF_AUTH_DISABLE_LOGIN_FORM=false
+          - GF_ORG_NAME=Triton compute
+          - GF_ORG_ROLE=viewer
+      volumes:
+          - ./data/grafana:/var/lib/grafana
+          - ./grafana/datasources:/etc/grafana/provisioning/datasources
+
+      depends_on:
+          - prometheus
+      ports:
+          - "3000:3000"
+      restart: on-failure
+
