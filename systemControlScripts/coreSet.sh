@@ -1,9 +1,11 @@
-#!/bin/sh -e
+#!/bin/bash
 
 #no args enables all cores
 #coreSet sets teh number of enabled cpu cores
 
-
 [ $# -eq 0 ] && \
-	for i in $(seq 1 $(echo $(nproc --all)-1 | bc)); do echo $i; echo 1 > /sys/devices/system/cpu/cpu$i/online; done || \
-	for i in $(seq $1 $(echo $(nproc --all)-1 | bc)); do echo $i; echo 0 > /sys/devices/system/cpu/cpu$i/online; done
+	echo 1 | eval sudo tee /sys/devices/system/cpu/cpu{1..$(echo $(nproc --all)-1 | bc)}/online || \
+	echo 0 | eval sudo tee /sys/devices/system/cpu/cpu{$1..$(echo $(nproc --all)-1 | bc)}/online
+
+
+
