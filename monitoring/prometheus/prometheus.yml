@@ -11,3 +11,27 @@ scrape_configs:
     static_configs:
     - targets: ["node-exporter:9100"]
 
+  - job_name: power_exporter
+    scrape_interval: 10s
+    scrape_timeout: 9s
+    honor_labels: true
+    metrics_path: /probe
+    static_configs:
+      - targets:
+          - http://host.docker.internal:22221/api/dev
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: geist-exporter:7979
+
+    
+
+  # This is to measure the json exporter application
+  - job_name: json-geist-application
+    static_configs:
+      - targets:
+        - geist-exporter:7979
+  

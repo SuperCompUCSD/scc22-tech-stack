@@ -32,6 +32,13 @@ services:
     expose:
       - 9100
 
+  geist-exporter:
+      image: quay.io/prometheuscommunity/json-exporter
+      volumes:
+          - $PWD/prometheus/geist.yml:/config.yml:ro
+      expose:
+          - 7979
+
   grafana:
       container_name: grafana
       image: grafana/grafana:main-ubuntu
