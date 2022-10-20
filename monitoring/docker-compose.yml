@@ -7,7 +7,7 @@ services:
       restart: unless-stopped
       volumes:
         - prometheus_data:/prometheus
-        - ./prometheus:/etc/prometheus
+        - $PWD/prometheus:/etc/prometheus
       command:
         - '--config.file=/etc/prometheus/prometheus.yml'
         - '--web.console.libraries=/etc/prometheus/console_libraries'
@@ -44,7 +44,7 @@ services:
           - GF_ORG_ROLE=viewer
       volumes:
           - grafana_data:/var/lib/grafana
-          - ./grafana/datasources:/etc/grafana/provisioning/datasources
+          - $PWD/grafana/datasources:/etc/grafana/provisioning/datasources
 
       depends_on:
           - prometheus
