@@ -1,0 +1,19 @@
+modules:
+  default:
+    metrics:
+      - name: power
+        type: object
+        help: Power consumption by our rack
+        path: '{$.data.*.entity.total0}' # This is the path to all total mesuarements of a single pdu 
+        labels:
+          label: '{.label}'
+        values:
+          real_power_watt: '{.measurement.0.value}'
+          real_power_state: '{.measurement.0.state}'
+          apparent_power_volt_ampere: '{.measurement.1.value}'
+          apparent_power_state: '{.measurement.1.state}'
+          power_factor: '{.measurement.2.value}'
+          power_factor_state: '{.measurement.2.state}'
+          energy_kwh: '{.measurement.3.value}'
+          energy_state: '{.measurement.3.state}'
+
