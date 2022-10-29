@@ -18,7 +18,7 @@ scrape_configs:
     metrics_path: /probe
     static_configs:
       - targets:
-          - http://host.docker.internal:22221/api/dev
+          - http://host.docker.internal:22221/api
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
