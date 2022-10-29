@@ -7,7 +7,7 @@ fi
 
 mkdir build 
 cd build
-cp ~/scc22-scripts/phasta-scripts/helper.sh
+cp ~/scc22-scripts/phasta-scripts/helper.sh .
 echo "Configuring Phasta..."
 . ./helper.sh
 echo "Building Phasta executable..."
