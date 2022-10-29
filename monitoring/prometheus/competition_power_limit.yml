@@ -1,0 +1,9 @@
+modules:
+  default:
+    metrics:
+      - name: competition_power_limit
+        help: Competition power limit
+        path: "{ .CapWatts }"
+        labels:
+          valid_untill: '{.ValidUntil}'
+

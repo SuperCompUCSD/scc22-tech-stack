@@ -38,6 +38,13 @@ services:
           - $PWD/prometheus/geist.yml:/config.yml:ro
       expose:
           - 7979
+  
+  competetion-power-exporter:
+      image: quay.io/prometheuscommunity/json-exporter
+      volumes:
+          - $PWD/prometheus/competition_power_limit.yml:/config.yml:ro
+      expose:
+          - 7979
 
   grafana:
       container_name: grafana
@@ -59,12 +66,15 @@ services:
           - "80:3000"
       restart: on-failure
 
-  fake_power:
+  fake-power:
     image: trinitronx/python-simplehttpserver
     volumes:
       - $PWD/fake_power/:/var/www:ro
+    expose:
+      - 8080
     ports:
-      - "7980:8080"
+      - "8080:8080"
+    
 volumes:
     prometheus_data: {}
     grafana_data: {}

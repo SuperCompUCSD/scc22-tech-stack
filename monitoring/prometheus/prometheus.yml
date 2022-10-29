@@ -27,6 +27,21 @@ scrape_configs:
       - target_label: __address__
         replacement: geist-exporter:7979
 
+  - job_name: competetion_power_limit
+    scrape_interval: 5s
+    scrape_timeout: 4s
+    honor_labels: true
+    metrics_path: /probe
+    static_configs:
+      - targets:
+          - http://fake-power:8080/power.json
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: competetion-power-exporter:7979
     
 
   # This is to measure the json exporter application
