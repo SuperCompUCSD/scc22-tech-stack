@@ -7,5 +7,5 @@ Compile
 
 Run
 ```
-. ./run-phasta.sh
+. ./run-phasta.sh <num_cores> <type_of_solver>
 ```
