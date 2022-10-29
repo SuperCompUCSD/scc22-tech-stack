@@ -67,9 +67,12 @@ services:
       restart: on-failure
 
   fake-power:
-    image: trinitronx/python-simplehttpserver
+    build:
+      context: .
+      dockerfile: fake_power/Dockerfile
+    restart: unless-stopped
     volumes:
-      - $PWD/fake_power/:/var/www:ro
+      - $PWD/fake_power/:/usr/src/app:ro
     expose:
       - 8080
     ports:
