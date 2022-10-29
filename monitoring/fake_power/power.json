@@ -1,0 +1,10 @@
+{
+    "ValidUntil": "20221011T170000Z",
+    "CapWatts":3000,
+
+    "KnownEvents": [ {
+        "Event": "Anticipated Surplus",
+        "StartTime": "20221113T160000Z",
+        "CapWatts": 3010
+    }]
+}
