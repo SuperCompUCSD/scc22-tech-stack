@@ -3,17 +3,173 @@ modules:
     metrics:
       - name: power
         type: object
-        help: Power consumption by our rack
-        path: '{$.data.*.entity.total0}' # This is the path to all total mesuarements of a single pdu 
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.breaker0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*]. 
         labels:
+          part: 'Breaker'
           label: '{.label}'
+          unit: '{.measurement.4.units}'
+          state: '{.measurement.4.state}'
+          type: '{.measurement.4.type}'
         values:
-          real_power_watt: '{.measurement.0.value}'
-          real_power_state: '{.measurement.0.state}'
-          apparent_power_volt_ampere: '{.measurement.1.value}'
-          apparent_power_state: '{.measurement.1.state}'
-          power_factor_pct: '{.measurement.2.value}'
-          power_factor_state: '{.measurement.2.state}'
-          energy_kwh: '{.measurement.3.value}'
-          energy_state: '{.measurement.3.state}'
+          metric: '{$.measurement.4.value}'
 
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.breaker1}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*]. 
+        labels:
+          part: 'Breaker'
+          label: '{.label}'
+          unit: '{.measurement.4.units}'
+          state: '{.measurement.4.state}'
+          type: '{.measurement.4.type}'
+        values: 
+          metric: '{$.measurement.4.value}'
+
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.total0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*]. 
+        labels:
+          part: 'Total'
+          label: '{.label}'
+          unit: '{.measurement.0.units}'
+          state: '{.measurement.0.state}'
+          type: '{.measurement.0.type}'
+        values:
+          metric: '{$.measurement.0.value}'
+        
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.total0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*].
+        labels:
+          part: 'Total'
+          label: '{.label}'
+          unit: '{.measurement.1.units}'
+          state: '{.measurement.1.state}'
+          type: '{.measurement.1.type}'
+        values:
+          metric: '{$.measurement.1.value}'
+
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.total0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*].
+        labels:
+          part: 'Total'
+          label: '{.label}'
+          unit: '{.measurement.2.units}'
+          state: '{.measurement.2.state}'
+          type: '{.measurement.2.type}'
+        values:
+          metric: '{$.measurement.2.value}'
+
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.total0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*].
+        labels:
+          part: 'Total'
+          label: '{.label}'
+          unit: '{.measurement.3.units}'
+          state: '{.measurement.3.state}'
+          type: '{.measurement.3.type}'
+        values:
+          metric: '{$.measurement.3.value}'
+
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.phase0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*].
+        labels:
+          part: 'Phase'
+          label: '{.label}'
+          unit: '{.measurement.0.units}'
+          state: '{.measurement.0.state}'
+          type: '{.measurement.0.type}'
+        values:
+          metric: '{$.measurement.0.value}'
+        
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.phase0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*].
+        labels:
+          part: 'Phase'
+          label: '{.label}'
+          unit: '{.measurement.4.units}'
+          state: '{.measurement.4.state}'
+          type: '{.measurement.4.type}'
+        values:
+          metric: '{$.measurement.4.value}'
+
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.phase0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*].
+        labels:
+          part: 'Phase'
+          label: '{.label}'
+          unit: '{.measurement.8.units}'
+          state: '{.measurement.8.state}'
+          type: '{.measurement.8.type}'
+        values:
+          metric: '{$.measurement.8.value}'
+
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.phase0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*].
+        labels:
+          part: 'Phase'
+          label: '{.label}'
+          unit: '{.measurement.9.units}'
+          state: '{.measurement.9.state}'
+          type: '{.measurement.9.type}'
+        values:
+          metric: '{$.measurement.9.value}'
+
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.phase0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*].
+        labels:
+          part: 'Phase'
+          label: '{.label}'
+          unit: '{.measurement.10.units}'
+          state: '{.measurement.10.state}'
+          type: '{.measurement.10.type}'
+        values:
+          metric: '{$.measurement.10.value}'
+
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.phase0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*].
+        labels:
+          part: 'Phase'
+          label: '{.label}'
+          unit: '{.measurement.11.units}'
+          state: '{.measurement.11.state}'
+          type: '{.measurement.11.type}'
+        values:
+          metric: '{$.measurement.11.value}'
+
+      
+      - name: power
+        type: object
+        help: Geist breakers power consumption
+        path: "{.data.dev.*.entity.phase0}"  # hardcoded array index. The package do not support JSONPath syntax like [breaker0,breaker1], or regex like [breaker.*].
+        labels:
+          part: 'Phase'
+          label: '{.label}'
+          unit: '{.measurement.12.units}'
+          state: '{.measurement.12.state}'
+          type: '{.measurement.12.type}'
+        values:
+          metric: '{$.measurement.12.value}'
+
+
+    
