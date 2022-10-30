@@ -1,0 +1,10 @@
+---
+    - hosts: dust
+      become: yes
+    
+      roles:
+        # Install the PrometheusNode Exporter Ansible role.
+        # This will be running on port dust.sdsc.edu:9100, accessible by
+        # the Prometheus instance on Bunny.
+        - cloudalchemy.node_exporter
+    
