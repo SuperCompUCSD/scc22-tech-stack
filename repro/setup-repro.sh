@@ -3,7 +3,7 @@
 set -e
 
 PATH="/usr/local/miniconda3/bin:$PATH"
-ENV_NAME="REPRO"
+ENV_NAME="repro"
 REPRO_DIR="$PWD/repro"
 
 echo "Checking for conda env..."
