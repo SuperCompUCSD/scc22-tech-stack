@@ -12,7 +12,7 @@ fi
 cd AirfoilDemo
 rm -rf mdsMsh
 echo "Creating .dmg model and mesh to SCOREC/core..."
-mpirun -np $1 ../build/test/from_gmsh none AirfoilDemo.msh mdsMsh/ airfoil.dmg
+/usr/mpi/gcc/openmpi-4.1.5a1/bin/mpirun -np $1 ../build/test/from_gmsh none AirfoilDemo.msh mdsMsh/ airfoil.dmg
 
 rm -rf $1-procs_case
 echo "Running chef to partition and generate procs_case folder..."
