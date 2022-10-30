@@ -14,7 +14,7 @@ else
 	conda create --name $ENV_NAME python=3.8 -y
 fi
 
-PYTHON="/home/anish/.conda/envs/$ENV_NAME/bin/python"
+PYTHON="/home/$(whoami)/.conda/envs/$ENV_NAME/bin/python"
 
 echo 'Creating repro directory...'
 
