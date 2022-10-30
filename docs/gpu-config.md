@@ -1,10 +1,11 @@
-# GPU Node Configuration
+# Neil (GPU Node) Configuration
 
 In `~/.ssh/config`:
 ```
-Host scc-cluster
+Host scc-neil
     User y5jing
     HostName dust.sdsc.edu
+    HostKeyAlias scc-neil
     IdentityFile ~/.ssh/id_ed25519
     KbdInteractiveAuthentication no
 ```

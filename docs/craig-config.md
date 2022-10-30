@@ -2,10 +2,10 @@
 
 In `~/.ssh/config`:
 ```
-Host craig
+Host scc-craig
 	User y5jing
 	HostName 192.31.21.252
-	HostKeyAlias craig
+	HostKeyAlias scc-craig
 	IdentityFile ~/.ssh/id_ed25519-ucsd
 	KbdInteractiveAuthentication no
 ```
