@@ -5,43 +5,43 @@ Mode: RPI 3
 In `~/.ssh/config`:
 ```
 Host scc-pi
-  User y5jing
-  HostName bunny.sdsc.edu
-  IdentityFile ~/.ssh/id_ed25519-ucsd
-  KbdInteractiveAuthentication no
+	User y5jing
+	HostName bunny.sdsc.edu
+	IdentityFile ~/.ssh/id_ed25519-ucsd
+	KbdInteractiveAuthentication no
 Host scc-pi-bmc
-  # https://localhost:22220
-  User y5jing
-  HostName bunny.sdsc.edu
-  IdentityFile ~/.ssh/id_ed25519-ucsd
-  KbdInteractiveAuthentication no
-  LocalForward 127.0.0.1:22220 192.168.4.20:443
-  ExitOnForwardFailure yes
-  SessionType none
-  RequestTTY no
-  StdinNull yes
+	# https://localhost:22220
+	User y5jing
+	HostName bunny.sdsc.edu
+	IdentityFile ~/.ssh/id_ed25519-ucsd
+	KbdInteractiveAuthentication no
+	LocalForward 127.0.0.1:22220 192.168.4.20:443
+	ExitOnForwardFailure yes
+	SessionType none
+	RequestTTY no
+	StdinNull yes
 Host scc-pi-pdu
-  # http://localhost:22221
-  User y5jing
-  HostName bunny.sdsc.edu
-  IdentityFile ~/.ssh/id_ed25519-ucsd
-  KbdInteractiveAuthentication no
-  LocalForward 127.0.0.1:22221 192.168.4.4:80
-  ExitOnForwardFailure yes
-  SessionType none
-  RequestTTY no
-  StdinNull yes
+	# http://localhost:22221
+	User y5jing
+	HostName bunny.sdsc.edu
+	IdentityFile ~/.ssh/id_ed25519-ucsd
+	KbdInteractiveAuthentication no
+	LocalForward 127.0.0.1:22221 192.168.4.4:80
+	ExitOnForwardFailure yes
+	SessionType none
+	RequestTTY no
+	StdinNull yes
 Host scc-pi-cpua-bmc
-  # https://localhost:22222
-  User y5jing
-  HostName bunny.sdsc.edu
-  IdentityFile ~/.ssh/id_ed25519-ucsd
-  KbdInteractiveAuthentication no
-  LocalForward 127.0.0.1:22222 192.168.4.22:443
-  ExitOnForwardFailure yes
-  SessionType none
-  RequestTTY no
-  StdinNull yes
+	# https://localhost:22222
+	User y5jing
+	HostName bunny.sdsc.edu
+	IdentityFile ~/.ssh/id_ed25519-ucsd
+	KbdInteractiveAuthentication no
+	LocalForward 127.0.0.1:22222 192.168.4.22:443
+	ExitOnForwardFailure yes
+	SessionType none
+	RequestTTY no
+	StdinNull yes
 ```
 
 SSH host key fingerprint:
