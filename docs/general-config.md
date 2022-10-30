@@ -43,3 +43,16 @@ How do disable SMT: ask Davit
 
 To check if SMT is disabled:
 `cat /sys/devices/system/cpu/smt/active`
+
+## AMD BLIS
+
+- First option in <https://developer.amd.com/amd-aocl/blas-library/>
+
+```
+sudo cp -ri include/LP64/* /usr/local/include/
+sudo cp -ri lib/LP64/* /usr/local/lib/
+cd /usr/local/include/
+sudo chmod u=rw,go=r blis.h blis.hh cblas.h cblas.hh
+cd /usr/local/lib/
+sudo chmod u=rw,go=r libblis-mt.a libblis-mt.so libblis-mt.so.3 libblis-mt.so.3.2.0 libblis.a libblis.so libblis.so.3 libblis.so.3.2.0
+```

@@ -18,3 +18,10 @@ When asked about SSH pub key fingerprint, paste the string segment starting with
 sudo lvextend -rL +5G vgroot/lvroot-ubuntu-22.04
 ```
 
+## LP64 vs ILP64
+
+Ubuntu uses LP64, meaning `int` type is 32 bits.
+
+Links
+- <https://unix.org/version2/whatsnew/lp64_wp.html>
+- <https://stackoverflow.com/questions/28750695/ubuntu-64-bit-is-lp64>
