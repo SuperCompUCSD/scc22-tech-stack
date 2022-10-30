@@ -30,7 +30,7 @@ sudo tee /usr/local/bin/wall > /dev/null << 'EOF'
 #!/bin/sh -e
 curl \
   -H "Content-Type: application/json" \
-  -d "{\"username\": \"$USER (on Neil)\", \"content\": $(echo -n "@everyone $@" | jq -Rsa .)}" \
+  -d "{\"username\": \"$USER@$(hostname)\", \"content\": $(echo -n "@everyone $@" | jq -Rsa .)}" \
 "https://discord.com/api/webhooks/1035726576983228466/7_3HcSnwltdxMDSXLpRUUP3XrJ-thexqNLTJj346Yj3aQvU2jeTMQBQMKOG7rVwJB3N0"
 /usr/bin/wall "$@"
 EOF
