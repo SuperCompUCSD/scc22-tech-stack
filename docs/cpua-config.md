@@ -1,6 +1,6 @@
 # CPU A Configuration
 
-SSH config:
+In `~/.ssh/config`:
 ```
 Host scc-cluster-cpua
 	User y5jing
@@ -26,3 +26,14 @@ y5jing@craig:~$ ssh-keygen -lvf /etc/ssh/ssh_host_ed25519_key.pub
 |      ...        |
 +----[SHA256]-----+
 ```
+
+## Configuration Status
+
+- General config is done
+- SMT is disabled
+
+# Particularities
+
+- Used Ubuntu default LVM conventions
+- No separate `/home` LV or partition
+- All disk space used up
