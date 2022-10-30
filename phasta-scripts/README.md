@@ -2,10 +2,10 @@ Scripts for compiling and running PHASTA on neil
 
 Compile 
 ```
-. ./compile-phasta.sh
+./compile-phasta.sh
 ```
 
 Run
 ```
-. ./run-phasta.sh <num_cores> <type_of_solver>
+. ./run-phasta.sh <num_cores>
 ```
