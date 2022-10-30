@@ -1,0 +1,8 @@
+---
+collections:
+  - name: community.general
+roles:
+  - name: caddy_ansible.caddy_ansible
+  - name: atosatto.grafana
+  - name: cloudalchemy.prometheus
+  - name: geerlingguy.node_exporter
