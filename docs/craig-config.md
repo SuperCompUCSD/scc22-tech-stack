@@ -1,11 +1,11 @@
-# CPU A Configuration
+# Craig (CPU A) Configuration
 
 In `~/.ssh/config`:
 ```
-Host scc-cluster-cpua
+Host craig
 	User y5jing
 	HostName 192.31.21.252
-	HostKeyAlias scc-cluster-cpua
+	HostKeyAlias craig
 	IdentityFile ~/.ssh/id_ed25519-ucsd
 	KbdInteractiveAuthentication no
 ```
