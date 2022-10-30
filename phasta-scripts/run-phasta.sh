@@ -12,14 +12,15 @@ fi
 cd AirfoilDemo
 rm -rf mdsMsh
 echo "Creating .dmg model and mesh to SCOREC/core..."
-/usr/mpi/gcc/openmpi-4.1.5a1/bin/mpirun -np $1 ../build/test/from_gmsh none AirfoilDemo.msh mdsMsh/ airfoil.dmg
+mpirun -np ${1} ../build/test/from_gmsh none AirfoilDemo.msh mdsMsh/ airfoil.dmg
 
 rm -rf $1-procs_case
+cd Chef
 echo "Running chef to partition and generate procs_case folder..."
-mpirun -np $1 ../../build/test/chef
+mpirun -np ${1} ../../build/test/chef
 
 export PHASTA_CONFIG=~/build
 echo $PHASTA_CONFIG
 #cp solver.inp.$2 solver.inp
 echo "Running PHASTA..."
-mpirun -np $1 $PHASTA_CONFIG/bin/phastaC.exe 
+mpirun -np ${1} $PHASTA_CONFIG/bin/phastaC.exe 
