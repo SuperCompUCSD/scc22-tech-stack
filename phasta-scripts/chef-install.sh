@@ -1,8 +1,10 @@
 #!/bin/bash
 cd 
-if [ ! -d gmsh_phasta ]; then
-        mkdir gmsh_phasta
+if [ -d gmsh_phasta ]
+then
+        rm -r gmsh_phasta
 fi
+mkdir gmsh_phasta
 cd gmsh_phasta
 
 wget https://fluid.colorado.edu/~kjansen/PHASTA/Scripts.tar

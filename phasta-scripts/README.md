@@ -2,7 +2,7 @@ Scripts for compiling and running PHASTA on neil
 
 Compile 
 ```
-. ./compile-phasta.sh
+./compile-phasta.sh
 ```
 
 Run
