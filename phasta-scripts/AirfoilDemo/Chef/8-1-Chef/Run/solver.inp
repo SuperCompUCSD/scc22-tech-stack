@@ -1,0 +1,52 @@
+# ibksiz flmpl flmpr itwmod wmodts dmodts fwr taucfct
+#
+#  Basic format is
+#    Key Phrase  :  Acceptable Value (integer, double, logical, or phrase
+#
+#SOLUTION CONTROL 
+#{                
+     Equation of State: Compressible
+     Viscous Control: Viscous                           # Inviscid # only for compressible code
+     Turbulence Model: No-Model                         # No-Model iturb=0, RANS =-1  LES=1 #}
+     Number of Timesteps: 100                        # replaces nsteps(1) (ntseq wired =1)
+     Time Step Size: 4.0e-4
+
+#MATERIAL PROPERTIES
+#{
+     Viscosity:  1e-2                              # fills datmat (2 values REQUIRED if iLset=1)
+     Prandtl Number: 0.72
+#}
+
+OUTPUT CONTROL
+{
+     Number of Timesteps between Restarts: 5           # replaces nout/ntout
+     Print Statistics: False                            # False=> ioform=1, True=> ioform=2
+     Print ybar: False
+}
+
+#LINEAR SOLVER
+#{
+     Solver Type: GMRES sparse
+     Number of GMRES Sweeps per Solve: 1                # replaces nGMRES
+     Number of Krylov Vectors per GMRES Sweep: 200      # replaces Kspace
+     Tolerance on Momentum Equations: 0.05 
+     Number of Solves per Left-hand-side Formation: 1   # nupdat/LHSupd(1)
+#}
+
+#DISCRETIZATION CONTROL
+#{
+     Time Integration Rule: First Order                 # Second Order sets rinf next
+     Time Integration Rho Infinity: 0.0                 # rinf(1) Only used for 2nd order
+     Tau Matrix: Diagonal-Shakib
+#     Tau Matrix: Matrix-Mallet                          # itau=1
+     Tau Time Constant: 1.                              # dtsfct
+     Include Viscous Correction in Stabilization: False # if p=1 idiff=1
+     Tau C Scale Factor: 1.0                            # taucfct  best value depends
+     Number of Elements Per Block: 128                  # ibksiz
+#}
+
+
+#STEP SEQUENCE 
+#{
+     Step Construction  : 0 1 0 1 0 1 
+#}

@@ -1,0 +1,22 @@
+timeStepNumber 0 
+ensa_dof 5 
+attributeFileName geom.spj
+modelFileName ../airfoil.dmg
+meshFileName ../mdsMsh/
+outMeshFileName mdsMesh/
+# restartFileName TO BE SPECIFIED 
+adaptFlag 0
+phastaIO 1
+AdaptStrategy 7 
+RecursiveUR 1
+splitFactor 1
+elementsPerMigration 10000
+SolutionMigration 0
+DisplacementMigration 0
+Tetrahedronize 0
+partitionMethod graph
+# ParmaPtn = {0:off,1:on}
+#ParmaPtn 0
+dwalMigration 0
+buildMapping 1
+#formElementGraph 0
