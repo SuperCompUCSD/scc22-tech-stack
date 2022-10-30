@@ -7,12 +7,14 @@ In `~/.ssh/config`:
 Host scc-pi
 	User y5jing
 	HostName bunny.sdsc.edu
+	HostKeyAlias scc-pi
 	IdentityFile ~/.ssh/id_ed25519-ucsd
 	KbdInteractiveAuthentication no
 Host scc-pi-bmc
 	# https://localhost:22220
 	User y5jing
 	HostName bunny.sdsc.edu
+	HostKeyAlias scc-pi
 	IdentityFile ~/.ssh/id_ed25519-ucsd
 	KbdInteractiveAuthentication no
 	LocalForward 127.0.0.1:22220 192.168.4.20:443
@@ -24,6 +26,7 @@ Host scc-pi-pdu
 	# http://localhost:22221
 	User y5jing
 	HostName bunny.sdsc.edu
+	HostKeyAlias scc-pi
 	IdentityFile ~/.ssh/id_ed25519-ucsd
 	KbdInteractiveAuthentication no
 	LocalForward 127.0.0.1:22221 192.168.4.4:80
@@ -31,13 +34,26 @@ Host scc-pi-pdu
 	SessionType none
 	RequestTTY no
 	StdinNull yes
-Host scc-pi-cpua-bmc
+Host scc-pi-craig-bmc
 	# https://localhost:22222
 	User y5jing
 	HostName bunny.sdsc.edu
+	HostKeyAlias scc-pi
 	IdentityFile ~/.ssh/id_ed25519-ucsd
 	KbdInteractiveAuthentication no
 	LocalForward 127.0.0.1:22222 192.168.4.22:443
+	ExitOnForwardFailure yes
+	SessionType none
+	RequestTTY no
+	StdinNull yes
+Host scc-pi-evans-bmc
+	# https://localhost:22223
+	User y5jing
+	HostName bunny.sdsc.edu
+	HostKeyAlias scc-pi
+	IdentityFile ~/.ssh/id_ed25519-ucsd
+	KbdInteractiveAuthentication no
+	LocalForward 127.0.0.1:22223 192.168.4.23:443
 	ExitOnForwardFailure yes
 	SessionType none
 	RequestTTY no
@@ -87,6 +103,11 @@ network:
       addresses: [192.168.4.21/24]
       routes:
         - to: 192.168.4.22
+    enx7cc2c632258f:
+      dhcp4: no
+      addresses: [192.168.4.99/24]
+      routes:
+        - to: 192.168.4.23
   version: 2
 ```
 Add one interface for each additional device.  After making changes, `sudo netplan apply`.
