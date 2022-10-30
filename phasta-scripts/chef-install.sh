@@ -2,7 +2,7 @@
 cd 
 if [ -d gmsh_phasta ]
 then
-        rm -r gmsh_phasta
+        sudo rm -r gmsh_phasta
 fi
 mkdir gmsh_phasta
 cd gmsh_phasta

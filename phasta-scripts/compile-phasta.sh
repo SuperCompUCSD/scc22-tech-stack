@@ -31,7 +31,12 @@ else
 	echo "Starting Build for Phasta without PETSC..."
         ./phasta-nopetsc.sh
 fi
-cd ~/scc22-scripts/phasta-scripts
-echo "Running script to build Chef..."
-# ./chef-install.sh
-#echo "Done compiling. Use the run.sh script to run PHASTA"
+echo "Press 1 to Run Chef-Install and 0 to not"
+read CHEF_INSTALL_YES
+if [ ${CHEF_INSTALL_YES} == "1" ]
+then
+	cd ~/scc22-scripts/phasta-scripts
+	echo "Running script to build Chef..."
+	./chef-install.sh
+	echo "Done compiling. Use the run.sh script to run PHASTA"
+fi
