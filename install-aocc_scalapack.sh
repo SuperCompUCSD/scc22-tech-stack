@@ -10,7 +10,7 @@ download()
     if [ -z "$1" ]
     then
         echo "ERROR: No link given. ┻━┻ ︵ ＼( °□° )／ ︵ ┻━┻"
-        exit(1)
+        exit 1
     elif [ -z "$2" ]
     then
         echo "ERROR: No file name given. ┻━┻ ︵ ＼( °□° )／ ︵ ┻━┻"
@@ -24,7 +24,7 @@ download()
 if [ "$(id -u)" -ne 0 ]
 then 
     echo "ERROR: Gimme root. (╯‵□′)╯︵┻━┻"
-    exit
+    exit 1
 fi
 
 echo "---- Installing AOCC ----"
