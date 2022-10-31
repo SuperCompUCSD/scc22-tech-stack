@@ -1,10 +1,17 @@
 #!/bin/bash
 AOCC_LOC="/opt/AMD/aocc-compiler-3.2.0/lib"
-AOCC="https://developer.amd.com/aocc-compiler-eula/"
-BLIS="https://developer.amd.com/amd-cpu-libraries_blis_eula/"
-FLAME="https://developer.amd.com/amd-cpu-libraries_libflame_eula/"
-SCALA="https://developer.amd.com/amd-optimizing-cpu-libraries_scalapack_libraries-eula/"
 
+AOCC="https://developer.amd.com/aocc-compiler-eula/"
+AOCC_VALS='amd_developer_central_nonce=c5d5a7f2b0&f=YW9jYy1jb21waWxlci0zLjIuMF8xX2FtZDY0LmRlYg%3D%3D'
+
+BLIS="https://developer.amd.com/amd-cpu-libraries_blis_eula/"
+BLIS_VALS="amd_developer_central_nonce=0022651802&_wp_http_referer=%2Famd-optimizing-cpu-libraries_scalapack_libraries-eula%2F&f=YW9jbC1zY2FsYXBhY2stbGludXgtYW9jYy0zLjIuMC50YXIuZ3o%3D"
+
+FLAME="https://developer.amd.com/amd-cpu-libraries_libflame_eula/"
+FLAME_VALS="amd_developer_central_nonce=aa4856827e&_wp_http_referer=%2Famd-cpu-libraries_libflame_eula%2F&f=YW9jbC1saWJmbGFtZS1saW51eC1hb2NjLTMuMi4wLnRhci5neg%3D%3D"
+
+SCALA="https://developer.amd.com/amd-optimizing-cpu-libraries_scalapack_libraries-eula/"
+SCALA_VALS="amd_developer_central_nonce=0022651802&_wp_http_referer=%2Famd-optimizing-cpu-libraries_scalapack_libraries-eula%2F&f=YW9jbC1zY2FsYXBhY2stbGludXgtYW9jYy0zLjIuMC50YXIuZ3o%3D"
 download() 
 {
     if [ -z "$1" ]
@@ -17,7 +24,7 @@ download()
     fi
 
     curl "$1" \
-        --data-raw 'amd_developer_central_nonce=c5d5a7f2b0&f=YW9jYy1jb21waWxlci0zLjIuMF8xX2FtZDY0LmRlYg%3D%3D' \
+        --data-raw "$3" \
         --output /tmp/$2
 }
 
@@ -42,7 +49,7 @@ cd aocc
 if [ ! -d "/opt/AMD" ]
 then
     echo ": Downloading AOCC... :"
-    download $AOCC "aocc.deb"
+    download $AOCC "aocc.deb" $AOCC_VALS
     echo ": Installing .deb file... :"
     dpkg -i /tmp/aocc.deb
     #dpkg -i aocc-compiler-3.2.0_1_amd64.deb
@@ -62,13 +69,13 @@ done
 cd scalapack
 
 echo ": Downloading AOCC... :"
-download $BLIS blis.tar.gz
+download $BLIS blis.tar.gz $BLIS_VALS
 
 echo ": Downloading AOCC... :"
-download $FLAME flame.tar.gz
+download $FLAME flame.tar.gz $FLAME_VALS
 
 echo ": Downloading AOCC... :"
-download $SCALA scala.tar.gz
+download $SCALA scala.tar.gz $SCALA_VALS
 
 tar -xvf /tmp/blis.tar.gz -C /tmp
 tar -xvf /tmp/flame.tar.gz -C /tmp
