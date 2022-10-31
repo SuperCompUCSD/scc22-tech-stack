@@ -112,6 +112,24 @@ network:
 ```
 Add one interface for each additional device.  After making changes, `sudo netplan apply`.
 
+## Samba
+
+```
+sudo apt install samba
+sudo ufw allow samba
+TODO https://ubuntu.com/tutorials/install-and-configure-samba#3-setting-up-samba
+[public]
+    comment = 2muchcache public samba share
+    path = /home/shared/sambashare/public
+    guest ok = yes
+    read only = yes
+    browsable = yes
+# TODO perm  interfaces
+sudo service smbd restart
+sudo smbpasswd -a username
+
+```
+
 ## Grafana
 
 TODO: need Anders to fill this out
