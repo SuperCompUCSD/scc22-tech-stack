@@ -49,7 +49,7 @@ do
 done
 
 # Install AOCC first
-if [ ! -d "/opt/AMD" ]
+if [ ! -d "/opt/AMD/aocc-compiler-3.2.0" ]
 then
     echo ": Downloading AOCC... :"
     download $AOCC "aocc.deb" $AOCC_VALS
