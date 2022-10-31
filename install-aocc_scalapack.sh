@@ -1,10 +1,9 @@
-#!/bin/sh -e
-
-$AOCC_LOC="/opt/AMD/aocc-compiler-3.2.0/lib"
-$AOCC="https://developer.amd.com/aocc-compiler-eula/"
-$BLIS="https://developer.amd.com/amd-cpu-libraries_blis_eula/"
-$FLAME="https://developer.amd.com/amd-cpu-libraries_libflame_eula/"
-$SCALA="https://developer.amd.com/amd-optimizing-cpu-libraries_scalapack_libraries-eula/"
+#!/bin/bash
+AOCC_LOC="/opt/AMD/aocc-compiler-3.2.0/lib"
+AOCC="https://developer.amd.com/aocc-compiler-eula/"
+BLIS="https://developer.amd.com/amd-cpu-libraries_blis_eula/"
+FLAME="https://developer.amd.com/amd-cpu-libraries_libflame_eula/"
+SCALA="https://developer.amd.com/amd-optimizing-cpu-libraries_scalapack_libraries-eula/"
 
 download() 
 {
