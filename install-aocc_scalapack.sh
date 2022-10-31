@@ -5,7 +5,7 @@ AOCC="https://developer.amd.com/aocc-compiler-eula/"
 AOCC_VALS='amd_developer_central_nonce=c5d5a7f2b0&f=YW9jYy1jb21waWxlci0zLjIuMF8xX2FtZDY0LmRlYg%3D%3D'
 
 BLIS="https://developer.amd.com/amd-cpu-libraries_blis_eula/"
-BLIS_VALS="amd_developer_central_nonce=0022651802&_wp_http_referer=%2Famd-optimizing-cpu-libraries_scalapack_libraries-eula%2F&f=YW9jbC1zY2FsYXBhY2stbGludXgtYW9jYy0zLjIuMC50YXIuZ3o%3D"
+BLIS_VALS="amd_developer_central_nonce=8ef6291fce&_wp_http_referer=%2Famd-cpu-libraries_blis_eula%2F&f=YW9jbC1ibGlzLWxpbnV4LWFvY2MtMy4yLjAudGFyLmd6"
 
 FLAME="https://developer.amd.com/amd-cpu-libraries_libflame_eula/"
 FLAME_VALS="amd_developer_central_nonce=aa4856827e&_wp_http_referer=%2Famd-cpu-libraries_libflame_eula%2F&f=YW9jbC1saWJmbGFtZS1saW51eC1hb2NjLTMuMi4wLnRhci5neg%3D%3D"
