@@ -12,6 +12,7 @@ FLAME_VALS="amd_developer_central_nonce=aa4856827e&_wp_http_referer=%2Famd-cpu-l
 
 SCALA="https://developer.amd.com/amd-optimizing-cpu-libraries_scalapack_libraries-eula/"
 SCALA_VALS="amd_developer_central_nonce=0022651802&_wp_http_referer=%2Famd-optimizing-cpu-libraries_scalapack_libraries-eula%2F&f=YW9jbC1zY2FsYXBhY2stbGludXgtYW9jYy0zLjIuMC50YXIuZ3o%3D"
+
 download() 
 {
     if [ -z "$1" ]
@@ -21,6 +22,9 @@ download()
     elif [ -z "$2" ]
     then
         echo "ERROR: No file name given. ┻━┻ ︵ ＼( °□° )／ ︵ ┻━┻"
+    elif [ -z "$3" ]
+    then
+        echo "ERROR: No parameters given. ┻━┻ ︵ ＼( °□° )／ ︵ ┻━┻"
     fi
 
     curl "$1" \
@@ -45,7 +49,6 @@ do
 done
 
 # Install AOCC first
-cd aocc
 if [ ! -d "/opt/AMD" ]
 then
     echo ": Downloading AOCC... :"
@@ -66,8 +69,6 @@ do
 done
 
 # Install scalapack, libflame, and blis
-cd scalapack
-
 echo ": Downloading AOCC... :"
 download $BLIS blis.tar.gz $BLIS_VALS
 
