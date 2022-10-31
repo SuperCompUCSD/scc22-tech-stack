@@ -28,25 +28,58 @@ then
     exit
 fi
 
+echo "---- Installing AOCC ----"
+echo -e "Ctrl+C to cancel within 5 seconds. Starting in 5..."
+sleep 1
+
+for (( i=4; i>0; i-- ))
+do
+    echo -e "$i..."
+    sleep 1
+done
+
 # Install AOCC first
 cd aocc
 if [ ! -d "/opt/AMD" ]
 then
+    echo ": Downloading AOCC... :"
     download $AOCC "aocc.deb"
+    echo ": Installing .deb file... :"
     dpkg -i /tmp/aocc.deb
     #dpkg -i aocc-compiler-3.2.0_1_amd64.deb
 fi
 
+echo "---- Installing AOCC Libraries ----"
+echo -e "Ctrl+C to cancel within 3 seconds. Starting in 3..."
+sleep 1
+
+for (( i=2; i>0; i-- ))
+do
+    echo -e "$i..."
+    sleep 1
+done
+
 # Install scalapack, libflame, and blis
 cd scalapack
+
+echo ": Downloading AOCC... :"
 download $BLIS blis.tar.gz
+
+echo ": Downloading AOCC... :"
 download $FLAME flame.tar.gz
+
+echo ": Downloading AOCC... :"
 download $SCALA scala.tar.gz
+
 tar -xvf /tmp/blis.tar.gz -C /tmp
 tar -xvf /tmp/flame.tar.gz -C /tmp
 tar -xvf /tmp/scala.tar.gz -C /tmp
+
+echo ": Moving library files :"
 cp /tmp/amd-blis/include/LP64/* $AOCC_LOC
 cp /tmp/amd-blis/examples/LP64/* $AOCC_LOC
 cp /tmp/amd-blis/lib/LP64/* $AOCC_LOC
 cp /tmp/amd-libflame/lib/LP64/* $AOCC_LOC
 cp /tmp/amd-scalapack/lib/LP64/* $AOCC_LOC
+
+echo "---- Finished. ----"
