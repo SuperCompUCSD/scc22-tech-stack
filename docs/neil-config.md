@@ -8,10 +8,31 @@ Host scc-neil
     HostKeyAlias scc-neil
     IdentityFile ~/.ssh/id_ed25519
     KbdInteractiveAuthentication no
+Host scc-neil-ubuntu-22.04
+    User y5jing
+    HostName dust.sdsc.edu
+    HostKeyAlias scc-neil-ubuntu-22.04
+    IdentityFile ~/.ssh/id_ed25519
+    KbdInteractiveAuthentication no
 ```
 
 SSH host key fingerprint:
 ```
+# Ubuntu 20.04
+y5jing@neil:~$ ssh-keygen -lvf /etc/ssh/ssh_host_ed25519_key.pub
+256 SHA256:k/WRvfutkJ9pj8nlYVUMeCwrXvA1hcMajCUWlL58jFk root@dust (ED25519)
++--[ED25519 256]--+
+|         .=*.+.o.|
+|         .+.=oOo |
+|         ..ooB.oo|
+|         oo.E. ..|
+|        So O. . .|
+|         .* o. ..|
+|           .o .o.|
+|             +oOo|
+|             .Oo=|
++----[SHA256]-----+
+# Ubuntu 22.04
 y5jing@neil:~$ ssh-keygen -lvf /etc/ssh/ssh_host_ed25519_key.pub
 256 SHA256:WRNXfOApsx62i9pafP6JlIktuDiFZ7ZGAKvI+nGs4S8 root@neil (ED25519)
 +--[ED25519 256]--+
@@ -26,10 +47,6 @@ y5jing@neil:~$ ssh-keygen -lvf /etc/ssh/ssh_host_ed25519_key.pub
 | .+o. .o+oo +.o  |
 +----[SHA256]-----+
 ```
-
-## Particularities
-
-- Ubuntu 22.04 and Ubuntu 20.04 dual boot
 
 ## Config
 
