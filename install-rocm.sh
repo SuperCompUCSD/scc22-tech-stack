@@ -1,4 +1,4 @@
-sudo apt update -y && \
+rocminfo && (sudo apt update -y && \
 	echo -ne 'adding rocm_gpg' && \
 	wget -q -O - https://repo.radeon.com/rocm/rocm.gpg.key | sudo apt-key add - && \
 	echo -ne 'adding adding amdgpu to apt' && \
@@ -13,4 +13,5 @@ sudo apt update -y && \
 	sudo ln -s /opt/rocm*/libexec/rocm_smi/rocm_smi.py /usr/bin/ && \
 	sudo mv /usr/bin/rocm_smi.py /usr/bin/rocm_smi && \
 	for ID in $(getent passwd {1000..2000} | awk -F ':' '{ print $1 }') ; do sudo usermod -aG render "$ID"; sudo usermod -aG video "$ID"; done && \
-	echo $(tput bold; tput setaf 196)  YOUR\'RE GOING TO NEED TO REBOOT $(tput sgr0)
+	echo $(tput bold; tput setaf 196)  YOUR\'RE GOING TO NEED TO REBOOT $(tput sgr0)) || \
+	echo ROCM is installed
