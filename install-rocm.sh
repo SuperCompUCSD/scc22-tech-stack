@@ -12,4 +12,5 @@ sudo apt update -y && \
 	echo -ne 'creating rocm_smi' && \
 	sudo ln -s /opt/rocm*/libexec/rocm_smi/rocm_smi.py /usr/bin/ && \
 	sudo mv /usr/bin/rocm_smi.py /usr/bin/rocm_smi && \
+	for ID in $(getent passwd {1000..2000} | awk -F ':' '{ print $1 }') ; do sudo usermod -aG render "$ID"; sudo usermod -aG video "$ID"; done && \
 	echo $(tput bold; tput setaf 196)  YOUR\'RE GOING TO NEED TO REBOOT $(tput sgr0)
