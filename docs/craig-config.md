@@ -58,3 +58,30 @@ y5jing@craig:~$ ssh-keygen -lvf /etc/ssh/ssh_host_ed25519_key.pub
 - Used Ubuntu default LVM conventions
 - No separate `/home` LV or partition
 - All disk space used up
+
+In `/etc/netplan/00-installer-config.yaml`
+```
+network:
+  ethernets:
+    enp68s0f0:
+      dhcp4: true
+    enp68s0f1:
+      dhcp4: true
+    enp68s0f2:
+      dhcp4: true
+    enp68s0f3:
+      dhcp4: true
+    enp129s0f0np0:
+      addresses:
+      - 10.0.1.5/24
+      routes:
+      - to: 10.0.1.4
+        via: 10.0.1.5
+    enp129s0f1np1:
+      addresses:
+      - 10.0.1.6/24
+      routes:
+      - to: 10.0.1.2
+        via: 10.0.1.6
+  version: 2
+```

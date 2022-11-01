@@ -50,22 +50,37 @@ y5jing@neil:~$ ssh-keygen -lvf /etc/ssh/ssh_host_ed25519_key.pub
 
 ## Config
 
-- Change all interfaces to optional in `/etc/netplan/00-installer-config.yaml` to prevent boot lag
 - Use newest ROCM install and use DKMS with default kernel (6.0 won't work)
 - Install BeeGFS
 - Miniconda install
 - Modify `/etc/environment` to have `/usr/local/miniconda3/bin:` prepended to `PATH`
 
-In `/etc/netplan/01-static-ip.yaml`:
+In `/etc/netplan/00-installer-config.yaml``:
 ```
 network:
   ethernets:
     enp5s0f1np1:
-      dhcp4: no
-      addresses: [192.31.21.127/24]
-      routes:
-        - to: default
-          via: 192.31.21.1
+      addresses:
+      - 192.31.21.127/24
+      gateway4: 192.31.21.1
       nameservers:
-        addresses: [132.249.20.25,198.202.75.26]
+        addresses:
+        - 132.249.20.25
+        - 198.202.75.26
+        search: []
+    enxb03af2b6059f:
+      dhcp4: true
+    enp12s0f0np0:
+      addresses:
+      - 10.0.1.1/24
+      routes:
+      - to: 10.0.1.3
+        via: 10.0.1.1
+    enp12s0f1np1:
+      addresses:
+      - 10.0.1.2/24
+      routes:
+      - to: 10.0.1.6
+        via: 10.0.1.2
+  version: 2
 ```
