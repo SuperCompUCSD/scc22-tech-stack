@@ -15,8 +15,8 @@ Open a terminal window on your computer and run:
 Open your browser and navigate to http://127.0.0.1:8086/vnc.html?autoconnect=true. Chooser will open. See the next page for more details on using *Chooser*.
 
 ## Web Desktop Viewer Configuration
-<img src="https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/vnc-setting-tab.png" align="left" height="250px"/>
-<img src="https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/vnc-settings.png" align="left" height="250px"/>
+<img src="https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/vnc-setting-tab.png" align="left" height="220px"/>
+<img src="https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/vnc-settings.png" align="left" height="220px"/>
 For best experience, click the menu button on the left side of the display and select the Settings icon. Here, make sure *Scaling Mode* is set to *Remote Resizing*.
 
 **Note**: The remote display may go to sleep. If you see a black screen, move the mouse around and click.
@@ -39,7 +39,7 @@ If asked to select a window manager, select openbox or ob. The application menu 
 The application menu can be found by selecting Applications in the bottom left. Paraview is in the Other section. Exit XFCE 4  gracefully by going to Applications > Log Out (You will not return to Chooser).
 
 ### Motif & Openbox
-	Hold Right Click to see the application menu. Paraview might not be there so you might need to launch it in a shell with paraview.
+Hold Right Click to see the application menu. Paraview might not be there so you might need to launch it in a shell with paraview.
 
 **Logging out** of these environments should take you back to Chooser (except XFCE4). Here, you can launch into another environment. **Log Out** before pressing **Ctrl-C** in your computer’s neil-desktop session window to gracefully terminate.
 
