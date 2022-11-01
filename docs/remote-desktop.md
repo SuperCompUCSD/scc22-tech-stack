@@ -16,8 +16,8 @@ Open a terminal window on your computer and run:
 Open your browser and navigate to http://127.0.0.1:8086/vnc.html?autoconnect=true. Chooser will open. See the next page for more details on using *Chooser*.
 
 ## Web Desktop Viewer Configuration
-<img src="https://github.com/ucsdsupercomputing/scc22-scripts/tree/main/docs/images/vnc-setting-tab.png" align="left" width="100px"/>
-<img src="https://github.com/ucsdsupercomputing/scc22-scripts/tree/main/docs/images/vnc-setting.png" align="left" width="300px"/>
+<img src="https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/vnc-setting-tab.png" align="left" width="100px"/>
+<img src="https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/vnc-settings.png" align="left" width="300px"/>
 For best experience, click the menu button on the left side of the display and select the Settings icon. Here, make sure *Scaling Mode* is set to *Remote Resizing*.
 
 **Note**: The remote display may go to sleep. If you see a black screen, move the mouse around and click.
@@ -30,7 +30,7 @@ On Mac, do **NOT** use the built-in app *Screen Sharing*.
 
 # Selecting Environment with Chooser.
 When you launch into remote access, you will be greeted with Chooser. Here, select the desktop environment of your choice. 
-![Chooser](https://github.com/ucsdsupercomputing/scc22-scripts/tree/main/docs/images/chooser.png)
+![Chooser](https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/chooser.png)
 
 ## Usage Notes
 ### LXQt
