@@ -10,13 +10,13 @@ And follow the configuration instructions to add web desktop to you
 Open a terminal window on your computer and run:
 `$ ssh neil-desktop`
 
-Keep this terminal open while using Web Desktop and only use Ctrl-C to close out the session, to prevent resource waste.
+**Keep this terminal open while using Web Desktop and only use Ctrl-C to close out the session, to prevent resource waste.**
 
 Open your browser and navigate to http://127.0.0.1:8086/vnc.html?autoconnect=true. Chooser will open. See the next page for more details on using *Chooser*.
 
 ## Web Desktop Viewer Configuration
-<img src="https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/vnc-setting-tab.png" align="left" height="300px"/>
-<img src="https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/vnc-settings.png" align="left" height="300px"/>
+<img src="https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/vnc-setting-tab.png" align="left" height="250px"/>
+<img src="https://github.com/ucsdsupercomputing/scc22-scripts/blob/main/docs/images/vnc-settings.png" align="left" height="250px"/>
 For best experience, click the menu button on the left side of the display and select the Settings icon. Here, make sure *Scaling Mode* is set to *Remote Resizing*.
 
 **Note**: The remote display may go to sleep. If you see a black screen, move the mouse around and click.
