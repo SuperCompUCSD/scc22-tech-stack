@@ -42,6 +42,7 @@ if ! [[ -e $UCX_DIR ]]; then
     --disable-params-check  --without-java
   make -j$(nproc)
   make -j$(nproc) install
+  ln -s /opt/mpi_install/ucx/bin/* /usr/bin/
 else
   printf "\nucx already installed\n"
 fi
