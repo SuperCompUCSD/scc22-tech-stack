@@ -10,8 +10,7 @@ And follow the configuration instructions to add web desktop to you
 Open a terminal window on your computer and run:
 `$ ssh neil-desktop`
 
-
-![#ff0000](Keep this terminal open while using Web Desktop and only use Ctrl-C to close out the session, to prevent resource waste.)
+Keep this terminal open while using Web Desktop and only use Ctrl-C to close out the session, to prevent resource waste.
 
 Open your browser and navigate to http://127.0.0.1:8086/vnc.html?autoconnect=true. Chooser will open. See the next page for more details on using *Chooser*.
 
@@ -26,7 +25,7 @@ For best experience, click the menu button on the left side of the display and s
 
 **Direct VNC** is on 127.0.0.1:8087. This requires a client like *VNC Viewer*. 
 On Mac, do **NOT** use the built-in app *Screen Sharing*.
-**Web Desktop** is more performant and recommended.
+**Web Desktop** is more performant and recommended.<br/>
 
 # Selecting Environment with Chooser.
 When you launch into remote access, you will be greeted with Chooser. Here, select the desktop environment of your choice. 
