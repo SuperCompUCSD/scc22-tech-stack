@@ -21,6 +21,32 @@
 # ConnectX 6 to ethernet mode
 https://www.youtube.com/watch?v=XLPgDEbUMgkw
 
+# `.ssh/config` between nodes
+## Neil
+```
+HOST craig
+	Hostname 10.0.1.6
+
+Host evans
+	Hostname 10.0.1.3
+```
+## Evans
+```
+HOST neil
+	Hostname 10.0.1.1
+
+Host craig
+	Hostname 10.0.1.5
+```
+## Craig
+```
+HOST neil
+	Hostname 10.0.1.2
+
+Host evans
+	Hostname 10.0.1.4
+```
+
 # `ibv_devices`
 ## Neil
 ```
