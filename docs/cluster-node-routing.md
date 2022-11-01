@@ -122,6 +122,47 @@ Ca      : 0xe8ebd30300d63631 ports 1 "dust HCA-4"
     mlx5_2              e8ebd30300d63630
     mlx5_3              e8ebd30300d63631
 ```
+### Netplan
+```
+k6vu@neil:~$ cat /etc/netplan/00-installer-config.yaml
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp150s0f0:
+      dhcp4: true
+    enp150s0f1:
+      dhcp4: true
+    enp151s0f0:
+      dhcp4: true
+    enp151s0f1:
+      dhcp4: true
+    enp5s0f0:
+      dhcp4: true
+    enp5s0f1np1:
+      addresses:
+      - 192.31.21.127/24
+      gateway4: 192.31.21.1
+      nameservers:
+        addresses:
+        - 132.249.20.25
+        - 198.202.75.26
+        search: []
+    enxb03af2b6059f:
+      dhcp4: true
+    enp12s0f0np0:
+      addresses:
+      - 10.0.1.1/24
+      routes:
+      - to: 10.0.1.3
+        via: 10.0.1.1
+    enp12s0f1np1:
+      addresses:
+      - 10.0.1.2/24
+      routes:
+      - to: 10.0.1.6
+        via: 10.0.1.2
+  version: 2
+```
 ## Evans
 ```
 hca_id: mlx5_0
@@ -179,6 +220,34 @@ root@evans:/etc/netplan# ibv_devices
     ------              ----------------
     mlx5_0              e8ebd303000b2f90
     mlx5_1              e8ebd303000b2f91
+```
+### Netplan
+```
+k6vu@evans:~$ cat /etc/netplan/00-installer-config.yaml
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp68s0f0:
+      dhcp4: true
+      addresses:
+      - 192.31.21.253/24
+      gateway4: 192.31.21.1
+    enp68s0f1:
+      dhcp4: true
+    enp161s0f0np0:
+      addresses:
+      - 10.0.1.3/24
+      routes:
+      - to: 10.0.1.1
+        via: 10.0.1.3
+    enp161s0f1np1:
+      addresses:
+      - 10.0.1.4/24
+      routes:
+      - to: 10.0.1.5
+        via: 10.0.1.4
+
+  version: 2
 ```
 ## Craig
 ```
@@ -238,4 +307,31 @@ root@craig:/etc/netplan# ibv_devices
     mlx5_0              e8ebd303000b1750
     mlx5_1              e8ebd303000b1751
 ```
-
+### Netplan
+```
+k6vu@craig:~$ cat /etc/netplan/00-installer-config.yaml
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp68s0f0:
+      dhcp4: true
+    enp68s0f1:
+      dhcp4: true
+    enp68s0f2:
+      dhcp4: true
+    enp68s0f3:
+      dhcp4: true
+    enp129s0f0np0:
+      addresses:
+      - 10.0.1.5/24
+      routes:
+      - to: 10.0.1.4
+        via: 10.0.1.5
+    enp129s0f1np1:
+      addresses:
+      - 10.0.1.6/24
+      routes:
+      - to: 10.0.1.2
+        via: 10.0.1.6
+  version: 2
+```
