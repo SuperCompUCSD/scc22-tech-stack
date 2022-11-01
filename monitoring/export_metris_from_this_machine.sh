@@ -1,5 +1,4 @@
-│#!/usr/bin/env bash
-
+#!/bin/sh -e
 echo "Remember to run this as sudo"
 
 sudo useradd -s /sbin/nologin --system node_exporter
@@ -38,3 +37,5 @@ sudo systemctl status node_exporter
 sudo systemctl enable node_exporter
 
 curl localhost:9100/metrics
+
+rm -r node_exporter-*
