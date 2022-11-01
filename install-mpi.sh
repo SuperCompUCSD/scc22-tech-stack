@@ -81,6 +81,7 @@ if ! [[ -e $OMPI_DIR ]]; then
     export LD_LIBRARY_PATH=/opt/mpi_install/ompi/lib:$LD_LIBRARY_PATH
     echo 'export LD_LIBRARY_PATH=/opt/mpi_install/ompi/lib:$LD_LIBRARY_PATH' >> /etc/profile
   fi
+  ln -s /opt/mpi_install/ompi/bin/* /usr/bin/
 else
   printf "\nopen-mpi already installed\n"
 fi
