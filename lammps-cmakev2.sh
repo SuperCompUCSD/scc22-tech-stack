@@ -18,6 +18,7 @@ cmake \
   -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
   -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
   -DCMAKE_CXX_COMPILER=${HIP_PATH}/bin/hipcc \
+  -DClangFormat_EXECUTABLE=/usr/bin/clang-format \
   ../cmake
 
 #  -DBUILD_OMP=yes \
