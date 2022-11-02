@@ -37,5 +37,5 @@ sudo systemctl status node_exporter
 sudo systemctl enable node_exporter
 
 curl localhost:9100/metrics
-
+cd ../
 rm -r node_exporter-*
