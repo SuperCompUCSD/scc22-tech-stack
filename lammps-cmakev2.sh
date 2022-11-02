@@ -3,6 +3,8 @@ source /etc/profile
 export hipcc=$(which hipcc)
 export install_prefix=.
 export mpi_cxx=$(which mpicxx)
+export LDFLAGS="-L/opt/rocm/lib"
+export CXXFLAGS="-I/opt/rocm/include"
 cmake \
   -DPKG_KOKKOS=yes \
   -DPKG_REAXFF=yes \
@@ -21,5 +23,3 @@ cmake \
   -DClangFormat_EXECUTABLE=/usr/bin/clang-format \
   ../cmake
 
-#  -DBUILD_OMP=yes \
-#  -DKokkos_ENABLE_OPENMP=yes \
