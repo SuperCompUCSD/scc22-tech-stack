@@ -37,5 +37,13 @@ sudo systemctl status node_exporter
 sudo systemctl enable node_exporter
 
 curl localhost:9100/metrics
+echo "changing directory"
 cd ../
+
+echo "removing downloaded files"
 rm -r node_exporter-*
+
+echo "alowing traffic trough port 9100"
+sudo ufw allow 9100
+
+
