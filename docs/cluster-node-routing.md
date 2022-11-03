@@ -1,12 +1,12 @@
 # Port Guids, ips, & routes
-| Node  | HCA ID | GUID             | IP interface | IP          | Dest Route |
-| ----- | ------ | ---------------- | ------------ | ----------- | ---------- |
-| Neil  | mlx5_2 | e8ebd30300d63630 | ibp12s0f0    | 10.0.1.1/24 | 10.0.1.3   |
-|       | mlx5_3 | e8ebd30300d63631 | ibp12s0f1    | 10.0.1.2/24 | 10.0.1.6   |
-| Evans | mlx5_0 | e8ebd303000b1750 | ibp161s0f0   | 10.0.1.3/24 | 10.0.1.1   |
-|       | mlx5_1 | e8ebd303000b1751 | ibp161s0f1   | 10.0.1.4/24 | 10.0.1.5   |
-| Craig | mlx5_0 | e8ebd303000b2f90 | ibp129s0f0   | 10.0.1.5/24 | 10.0.1.4   |
-|       | mlx5_1 | e8ebd303000b2f91 | ibp129s0f1   | 10.0.1.6/24 | 10.0.1.2   |
+| Node  | HCA ID | GUID             | IP interface | IP          | Dest Route | Dest. Node |
+| ----- | ------ | ---------------- | ------------ | ----------- | ---------- | ---------- |
+| Neil  | mlx5_2 | e8ebd30300d63630 | ibp12s0f0    | 10.0.1.1/24 | 10.0.1.3   | Evans      |
+|       | mlx5_3 | e8ebd30300d63631 | ibp12s0f1    | 10.0.1.2/24 | 10.0.1.6   | Craig      |
+| Evans | mlx5_0 | e8ebd303000b1750 | ibp161s0f0   | 10.0.1.3/24 | 10.0.1.1   | Neil       |
+|       | mlx5_1 | e8ebd303000b1751 | ibp161s0f1   | 10.0.1.4/24 | 10.0.1.5   | Craig      |
+| Craig | mlx5_0 | e8ebd303000b2f90 | ibp129s0f0   | 10.0.1.5/24 | 10.0.1.4   | Evans      |
+|       | mlx5_1 | e8ebd303000b2f91 | ibp129s0f1   | 10.0.1.6/24 | 10.0.1.2   | Neil       | 
 
 # ib Connections 
 | Src Node | Src HCA | Src GUID         | ->  | Dest Node | Dest HCA | Dest GUID        |
