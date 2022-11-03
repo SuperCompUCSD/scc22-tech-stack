@@ -30,6 +30,9 @@ if ! [[ -e /etc/infiniband/info ]]; then
     >&2 echo "I do not know where to find ofed drivers for $OSVER"
     exit 1
   fi
+  if [[ $LD_LIBRARY_PATH != *"/opt/mellanox/hcoll/lib"* ]]; then
+    echo 'export LD_LIBRARY_PATH=/opt/mellanox/hcoll/lib:$LD_LIBRARY_PATH' >> /etc/profile
+  fi
 else
   >&2 echo "infiniband already installed"
   exit 1
