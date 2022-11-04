@@ -22,6 +22,14 @@ sudo chgrp ssh-users /home/shared
 sudo chmod ug+rwx,g+s,o-rwx /home/shared
 ```
 
+## Rip out snap
+
+```
+# if this command fails, unmount the snap mounts as reported by `mount` and try again
+sudo apt autoremove --purge snapd
+sudo apt-mark hold snapd
+```
+
 ## Wall to Discord
 
 ```
