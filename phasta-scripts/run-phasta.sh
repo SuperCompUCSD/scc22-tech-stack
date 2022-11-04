@@ -55,3 +55,10 @@ PTH=~/scc22-scripts/phasta-scripts/test.pht
 if [ $COUNT == 0 ]; then
 	cp $PTH .
 fi
+gprof -s $PHASTA_CONFIG/bin/phastaC.exe gmon.out-*
+gprof $PHASTA_CONFIG/bin/phastaC.exe gmon.sum > ${1}.out
+if [ ! -d result ]; then
+	mkdir result
+fi
+mv ${1}.out result
+rm gmon*
