@@ -14,7 +14,7 @@ cmake \
 -DCMAKE_C_COMPILER=gcc \
 -DCMAKE_CXX_COMPILER=g++ \
 -DCMAKE_Fortran_COMPILER=gfortran \
--DCMAKE_Fortran_FLAGS="-fallow-argument-mismatch -pg" \
+-DCMAKE_Fortran_FLAGS="-pg" \
 -DCMAKE_BUILD_TYPE=Debug \
 -DPHASTA_INCOMPRESSIBLE=OFF \
 -DPHASTA_COMPRESSIBLE=ON \
