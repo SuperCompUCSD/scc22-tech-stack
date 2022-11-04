@@ -76,7 +76,7 @@ func convert_from_json(metricsJson GpuMetricsPolls) GpuMetrics {
 
 func getROCMMetrics() GpuMetrics {
 	// run gpu_sample process
-	rocmCmd := exec.Command("/Users/ghost/Downloads/scc22-scripts/monitoring/gpu_exporter/rocm-smi")
+	rocmCmd := exec.Command("/Users/ghost/Downloads/scc22-scripts/monitoring/gpu_exporter/rocm_smi")
 	rocmOut, err := rocmCmd.Output()
 	if err != nil {
 		log.Fatal(err)
@@ -94,43 +94,43 @@ var (
 	gpuSensorEdge = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "temp_sensor_edge",
 		Help: "The temperature at the edge sensor of a given GPU, in Celsius.",
-	}, []string{"gpu"})
+	}, []string{"gpu", "performance_level"})
 	gpuSensorJunction = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "neil_gpu_temp_sensor_junction",
 		Help: "The temperature at the junction sensor of a given GPU, in Celsius.",
-	}, []string{"gpu"})
+	}, []string{"gpu", "performance_level"})
 	gpuSensorMemory = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "neil_gpu_temp_sensor_memory",
 		Help: "The temperature at the memory sensor of a given GPU, in Celsius.",
-	}, []string{"gpu"})
+	}, []string{"gpu", "performance_level"})
 	gpuSensorHBM0 = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "neil_gpu_temp_sensor_hbm0",
 		Help: "The temperature at the HBM 0 sensor of a given GPU, in Celsius.",
-	}, []string{"gpu"})
+	}, []string{"gpu", "performance_level"})
 	gpuSensorHBM1 = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "neil_gpu_temp_sensor_hbm1",
 		Help: "The temperature at the HBM 1 sensor of a given GPU, in Celsius.",
-	}, []string{"gpu"})
+	}, []string{"gpu", "performance_level"})
 	gpuSensorHBM2 = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "neil_gpu_temp_sensor_hbm2",
 		Help: "The temperature at the HBM 2 sensor of a given GPU, in Celsius.",
-	}, []string{"gpu"})
+	}, []string{"gpu", "performance_level"})
 	gpuSensorHBM3 = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "neil_gpu_temp_sensor_hbm3",
 		Help: "The temperature at the HBM 3 sensor of a given GPU, in Celsius.",
-	}, []string{"gpu"})
+	}, []string{"gpu", "performance_level"})
 	averageGraphicsPackagePower = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "neil_gpu_average_graphics_package_power",
 		Help: "Average graphics package power, in Watts.",
-	}, []string{"gpu"})
+	}, []string{"gpu", "performance_level"})
 	gpuUse = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "neil_gpu_gpu_use",
 		Help: "Percentage of GPU usage.",
-	}, []string{"gpu"})
+	}, []string{"gpu", "performance_level"})
 	gfxActivity = promauto.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "neil_gpu_gfx_activity",
 		Help: "GFX Activity.",
-	}, []string{"gpu"})
+	}, []string{"gpu", "performance_level"})
 )
 
 func recordMetrics() {
@@ -138,16 +138,16 @@ func recordMetrics() {
 		for {
 			metrics := getROCMMetrics()
 			for k, v := range metrics {
-				gpuSensorEdge.WithLabelValues(k).Set(v.TempSensorEdge)
-				gpuSensorJunction.WithLabelValues(k).Set(v.TempSensorJunction)
-				gpuSensorMemory.WithLabelValues(k).Set(v.TempSensorMemory)
-				gpuSensorHBM0.WithLabelValues(k).Set(v.TempSensorHBM0)
-				gpuSensorHBM1.WithLabelValues(k).Set(v.TempSensorHBM1)
-				gpuSensorHBM2.WithLabelValues(k).Set(v.TempSensorHBM2)
-				gpuSensorHBM3.WithLabelValues(k).Set(v.TempSensorHBM3)
-				averageGraphicsPackagePower.WithLabelValues(k).Set(v.AverageGraphicsPackagePower)
-				gpuUse.WithLabelValues(k).Set(v.GPUuse)
-				gfxActivity.WithLabelValues(k).Set(float64(v.GFXActivity))
+				gpuSensorEdge.WithLabelValues(k, v.PerformanceLevel).Set(v.TempSensorEdge)
+				gpuSensorJunction.WithLabelValues(k, v.PerformanceLevel).Set(v.TempSensorJunction)
+				gpuSensorMemory.WithLabelValues(k, v.PerformanceLevel).Set(v.TempSensorMemory)
+				gpuSensorHBM0.WithLabelValues(k, v.PerformanceLevel).Set(v.TempSensorHBM0)
+				gpuSensorHBM1.WithLabelValues(k, v.PerformanceLevel).Set(v.TempSensorHBM1)
+				gpuSensorHBM2.WithLabelValues(k, v.PerformanceLevel).Set(v.TempSensorHBM2)
+				gpuSensorHBM3.WithLabelValues(k, v.PerformanceLevel).Set(v.TempSensorHBM3)
+				averageGraphicsPackagePower.WithLabelValues(k, v.PerformanceLevel).Set(v.AverageGraphicsPackagePower)
+				gpuUse.WithLabelValues(k, v.PerformanceLevel).Set(v.GPUuse)
+				gfxActivity.WithLabelValues(k, v.PerformanceLevel).Set(float64(v.GFXActivity))
 			}
 			time.Sleep(10 * time.Second)
 		}
