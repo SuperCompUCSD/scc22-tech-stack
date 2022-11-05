@@ -13,6 +13,9 @@ FLAME_VALS="amd_developer_central_nonce=aa4856827e&_wp_http_referer=%2Famd-cpu-l
 SCALA="https://developer.amd.com/amd-optimizing-cpu-libraries_scalapack_libraries-eula/"
 SCALA_VALS="amd_developer_central_nonce=0022651802&_wp_http_referer=%2Famd-optimizing-cpu-libraries_scalapack_libraries-eula%2F&f=YW9jbC1zY2FsYXBhY2stbGludXgtYW9jYy0zLjIuMC50YXIuZ3o%3D"
 
+FFTW="https://developer.amd.com/amd-optimizing-cpu-libraries_fftw_libraries-eula/"
+FFTW_VALS="amd_developer_central_nonce=25677e7dfb&_wp_http_referer=%2Famd-optimizing-cpu-libraries_fftw_libraries-eula%2F&f=YW9jbC1mZnR3LWxpbnV4LWFvY2MtMy4yLjAudGFyLmd6"
+
 download() 
 {
     if [ -z "$1" ]
@@ -68,7 +71,7 @@ do
     sleep 1
 done
 
-# Install scalapack, libflame, and blis
+# Install scalapack, libflame, blis, and fftw
 echo ": Downloading AOCC... :"
 download $BLIS blis.tar.gz $BLIS_VALS
 
@@ -78,9 +81,13 @@ download $FLAME flame.tar.gz $FLAME_VALS
 echo ": Downloading AOCC... :"
 download $SCALA scala.tar.gz $SCALA_VALS
 
+echo ": Downloading AOCC... :"
+download $FFTW fftw.tar.gz $FFTW_VALS
+
 tar -xvf /tmp/blis.tar.gz -C /tmp
 tar -xvf /tmp/flame.tar.gz -C /tmp
 tar -xvf /tmp/scala.tar.gz -C /tmp
+tar -xvf /tmp/fftw.tar.gz -C /tmp
 
 echo ": Moving library files :"
 cp /tmp/amd-blis/include/LP64/* $AOCC_LOC
@@ -88,5 +95,6 @@ cp /tmp/amd-blis/examples/LP64/* $AOCC_LOC
 cp /tmp/amd-blis/lib/LP64/* $AOCC_LOC
 cp /tmp/amd-libflame/lib/LP64/* $AOCC_LOC
 cp /tmp/amd-scalapack/lib/LP64/* $AOCC_LOC
+cp /tmp/amd-fftw/lib/LP64/* $AOCC_LOC
 
 echo "---- Finished. ----"
