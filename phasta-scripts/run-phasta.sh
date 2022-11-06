@@ -22,13 +22,13 @@ fi
 
 rm -rf mdsMsh
 echo "Creating .dmg model and mesh to SCOREC/core..."
-mpirun -np 1 ~/gmsh_phasta/build/test/from_gmsh none AirfoilDemo.msh mdsMsh/ airfoil.dmg
+mpirun -np 1 --mca btl ^openib ~/gmsh_phasta/build/test/from_gmsh none AirfoilDemo.msh mdsMsh/ airfoil.dmg
 
 rm -rf $1-procs_case
 cd Chef
 echo "Running chef to partition and generate procs_case folder..."
 sed -i 's/^splitFactor.*/splitFactor '${1}'/g' adapt.inp
-mpirun -np ${1} ~/gmsh_phasta/build/test/chef
+mpirun -np ${1} --mca btl ^openib ~/gmsh_phasta/build/test/chef
 
 export PHASTA_CONFIG=~/phasta/build
 echo $PHASTA_CONFIG
@@ -48,17 +48,17 @@ else
 fi
 echo "Running PHASTA..."
 export GMON_OUT_PREFIX=gmon.out-
-mpirun -x GMON_OUT_PREFIX -np ${1} $PHASTA_CONFIG/bin/phastaC.exe 
-
+time -p mpirun --mca btl ^openib -x UCX_TLS=ud,sm,self -x GMON_OUT_PREFIX -np ${1} $PHASTA_CONFIG/bin/phastaC.exe 
 COUNT=`ls -1 *.pht 2>/dev/null | wc -l`
 PTH=~/scc22-scripts/phasta-scripts/test.pht
 if [ $COUNT == 0 ]; then
 	cp $PTH .
 fi
+
 gprof -s $PHASTA_CONFIG/bin/phastaC.exe gmon.out-*
-gprof $PHASTA_CONFIG/bin/phastaC.exe gmon.sum > ${1}.out
+gprof $PHASTA_CONFIG/bin/phastaC.exe gmon.sum > ${1}-petsc.out
 if [ ! -d result ]; then
 	mkdir result
 fi
-mv ${1}.out result
+mv ${1}-petsc.out result
 rm gmon*
