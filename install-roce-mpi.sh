@@ -10,3 +10,5 @@ cd openmpi-4.1.4
 ./configure --prefix=${MYHOME}/matt/local/ompi --with-ucx=${MYHOME}/matt/local/ucx
 make all install -j 128
 
+# --enable-mca-no-build=btl-uct  to disable uct at build, could be a good idea
+# may want to disable openib btl at build time
