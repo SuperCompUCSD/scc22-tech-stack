@@ -14,7 +14,7 @@
 Details can be found in
 [my personal dotfiles](https://git.duckduckwhale.com/DuckDuckWhale/dotfiles/src/commit/e92fa0f73c043bf0d7585f8d11eb4d93714d3a45/setup/ubuntu-setup.md).
 
-## Kenrel 5.15.0
+## Kernel 5.15.0
 
 - `sudo apt install linux-image-unsigned-5.15.0-52-generic linux-modules-5.15.0-52-generic
   linux-headers-5.15.0-52-generic linux-modules-extra-4.15.0-20-generic`
