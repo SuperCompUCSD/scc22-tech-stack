@@ -64,3 +64,10 @@ sudo chmod u=rw,go=r blis.h blis.hh cblas.h cblas.hh
 cd /usr/local/lib/
 sudo chmod u=rw,go=r libblis-mt.a libblis-mt.so libblis-mt.so.3 libblis-mt.so.3.2.0 libblis.a libblis.so libblis.so.3 libblis.so.3.2.0
 ```
+
+## SSD Commands
+
+```
+sudo nvme list # list the nvme devices in a nice format
+lsblk # show the devices and where they are mounted
+```
