@@ -277,3 +277,5 @@ root@craig:/etc/netplan# ibv_devices
 To run pingpong test with neil as server and evans as client:
 user@neil:~$ ibv_rc_pingpong -d mlx5_2 -g 4
 user@evans:~$ ibv_rc_pingpong -d mlx5_0 -g 3 10.0.1.1
+```
+mpirun --hostfile ~/test/hos ~/tmpbryan/hello 
