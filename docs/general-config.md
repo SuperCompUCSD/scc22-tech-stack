@@ -17,7 +17,7 @@ Details can be found in
 ## Kernel 5.15.0
 
 - `sudo apt install linux-image-unsigned-5.15.0-52-generic linux-modules-5.15.0-52-generic
-  linux-headers-5.15.0-52-generic linux-modules-extra-4.15.0-20-generic`
+  linux-headers-5.15.0-52-generic linux-modules-extra-5.15.0-52-generic`
 
 ## Shared home folder
 
