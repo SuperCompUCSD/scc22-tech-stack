@@ -2,7 +2,7 @@
 
 ## Installation
 
-- Install Ubuntu 22.04 via Ventoy
+- Install Ubuntu 20.04 via Ventoy
   - Make a 1-2G boot partition at the end of the drive & an LVM partition before it
   - `sudo pvcreate </dev/pv-partition>`
   - `sudo vgcreate vgroot /dev/mapper/pvroot`

@@ -51,6 +51,8 @@ y5jing@neil:~$ ssh-keygen -lvf /etc/ssh/ssh_host_ed25519_key.pub
 ## Config
 
 - Use newest ROCM install and use DKMS with default kernel (6.0 won't work)
+- `sudo apt install linux-image-unsigned-5.15.0-52-generic
+  linux-modules-5.15.0-52-generic linux-headers-5.15.0-52-generic`
 - Install BeeGFS
 - Miniconda install
 - Modify `/etc/environment` to have `/usr/local/miniconda3/bin:` prepended to `PATH`
@@ -83,4 +85,13 @@ network:
       - to: 10.0.1.6
         via: 10.0.1.2
   version: 2
+```
+
+## Liquid RAID0
+
+```
+sudo mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=16 \
+	/dev/nvme{0,1,2,3,4,5,6,7,10,11,12,13,14,15,16,17}n1
+sudo mkfs.xfs /dev/md0
+sudo mount /dev/md0 /mnt
 ```
