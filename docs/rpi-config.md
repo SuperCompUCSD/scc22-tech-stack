@@ -10,49 +10,19 @@ Host scc-pi
 	HostKeyAlias scc-pi
 	IdentityFile ~/.ssh/id_ed25519-ucsd
 	KbdInteractiveAuthentication no
-Host scc-pi-bmc
-	# https://localhost:22220
+Host scc-pi-forward
+	# Neil BMC: https://localhost:22220
+	# PDU: http://localhost:22221
+	# Craig BMC: https://localhost:22222
+	# Evans BMC: https://localhost:22223
 	User y5jing
 	HostName bunny.sdsc.edu
 	HostKeyAlias scc-pi
 	IdentityFile ~/.ssh/id_ed25519-ucsd
 	KbdInteractiveAuthentication no
 	LocalForward 127.0.0.1:22220 192.168.4.20:443
-	ExitOnForwardFailure yes
-	SessionType none
-	RequestTTY no
-	StdinNull yes
-Host scc-pi-pdu
-	# http://localhost:22221
-	User y5jing
-	HostName bunny.sdsc.edu
-	HostKeyAlias scc-pi
-	IdentityFile ~/.ssh/id_ed25519-ucsd
-	KbdInteractiveAuthentication no
 	LocalForward 127.0.0.1:22221 192.168.4.4:80
-	ExitOnForwardFailure yes
-	SessionType none
-	RequestTTY no
-	StdinNull yes
-Host scc-pi-craig-bmc
-	# https://localhost:22222
-	User y5jing
-	HostName bunny.sdsc.edu
-	HostKeyAlias scc-pi
-	IdentityFile ~/.ssh/id_ed25519-ucsd
-	KbdInteractiveAuthentication no
 	LocalForward 127.0.0.1:22222 192.168.4.22:443
-	ExitOnForwardFailure yes
-	SessionType none
-	RequestTTY no
-	StdinNull yes
-Host scc-pi-evans-bmc
-	# https://localhost:22223
-	User y5jing
-	HostName bunny.sdsc.edu
-	HostKeyAlias scc-pi
-	IdentityFile ~/.ssh/id_ed25519-ucsd
-	KbdInteractiveAuthentication no
 	LocalForward 127.0.0.1:22223 192.168.4.23:443
 	ExitOnForwardFailure yes
 	SessionType none
