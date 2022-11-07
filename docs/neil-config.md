@@ -51,8 +51,6 @@ y5jing@neil:~$ ssh-keygen -lvf /etc/ssh/ssh_host_ed25519_key.pub
 ## Config
 
 - Use newest ROCM install and use DKMS with default kernel (6.0 won't work)
-- `sudo apt install linux-image-unsigned-5.15.0-52-generic
-  linux-modules-5.15.0-52-generic linux-headers-5.15.0-52-generic`
 - Install BeeGFS
 - Miniconda install
 - Modify `/etc/environment` to have `/usr/local/miniconda3/bin:` prepended to `PATH`
