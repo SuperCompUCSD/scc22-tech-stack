@@ -1,0 +1,9 @@
+package_update: true
+package_upgrade: true
+packages:
+    - build-essential
+    - gcc
+    - g++
+    - gfortran
+    - xterm
+    - nvidia-driver-470

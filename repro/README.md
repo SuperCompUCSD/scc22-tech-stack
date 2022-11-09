@@ -25,6 +25,16 @@ This entire process should take about **3 hours**.
 ## GPU Benchmarking (Azure)
 
 1. `spack load miniconda3`
+nvidia-driver-470
+`conda install -c nvidia cudatoolkit=11.4 cuda`
+`pip install cupy pygount`
+
+**ATAX BENCHMARKING ERROR:**
+```
+/usr/bin/ld: cannot find -lcublas
+collect2: error: ld returned 1 exit status
+CMakeFiles/parallel.dir/build.make:653: recipe for target 'libparallel.so' failed
+```
 
 ...
 
