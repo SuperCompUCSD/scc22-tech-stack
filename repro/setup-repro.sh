@@ -37,6 +37,6 @@ cd "$REPRO_DIR/npbench"
 $PYTHON -m pip install -r requirements.txt
 $PYTHON -m pip install .
 echo "DONE INSTALLING NPBENCH"
-$PYTHON -m pip install numba pythran
-conda install blas numpy mpi4py mkl-include
+#$PYTHON -m pip install numba pythran
+#conda install blas numpy mpi4py mkl-include
 echo "DONE SETTING UP REPRO SCRIPT"
