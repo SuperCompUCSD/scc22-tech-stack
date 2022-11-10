@@ -1,0 +1,477 @@
+    1  wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.12.0-Linux-x86_64.sh
+    2  sh Miniconda3-py38_4.12.0-Linux-x86_64.sh
+    3  exit
+    4  clear
+    5  ls
+    6  nvidia-smi
+    7  nvcc
+    8  sudo apt install nvidia-driver-470
+    9  gcc
+   10  g++
+   11  sudo reboot
+   12  ls
+   13  nvidia-smi
+   14  reboot
+   15  sudo reboot
+   16  ls
+   17  nvidia-smi
+   18  ls
+   19  ip a
+   20  ls
+   21  cd repro/
+   22  ls
+   23  cd dace/
+   24  ls
+   25  conda -v
+   26  conda -V
+   27  vim conda-tool.sh
+   28  ls
+   29  cd ..
+   30  ls
+   31  cd repro/
+   32  ls
+   33  cd dace/
+   34  ls
+   35  cd ..
+   36  ls
+   37  cd npbench/
+   38  ls
+   39  conda -V
+   40  conda install -c conda-forge cupy
+   41  ls
+   42  cd
+   43  ls
+   44  tar -xf repro.tar.gz
+   45  cd repro/
+   46  ls
+   47  ./setup-repro.sh
+   48  ls
+   49  cd repro/
+   50  ls
+   51  cd dace/
+   52  ls
+   53  cat test_all.sh
+   54  ls
+   55  ls test
+   56  ls tests/
+   57  cd tests/
+   58  ls
+   59  ./cuda_test.sh
+   60  nvidia-smi
+   61  sudo reboot
+   62  ls
+   63  cd repro/
+   64  ls
+   65  cd dace/
+   66  ls
+   67  cd tests/
+   68  ls
+   69  ./cuda_test.sh
+   70  conda install aenum
+   71  ls
+   72  ./cuda_test.sh
+   73  conda install yaml
+   74  ./cuda_test.sh
+   75  conda install click
+   76  ./cuda_test.sh
+   77  conda install yaml
+   78  ./cuda_test.sh
+   79  nvidia-smi
+   80  ls
+   81  cd
+   82  cd repro/
+   83  ls
+   84  ./setup-repro.sh
+   85  ls
+   86  cd azure/
+   87  ls
+   88  cd ..
+   89  ls
+   90  cd npbench/
+   91  ls
+   92  cd ..
+   93  cd npbench/
+   94  ls
+   95  cat framework.m
+   96  cat framework.md
+   97  cat frameworks.md
+   98  ls
+   99  conda activate
+  100  conda activate list
+  101  conda list
+  102  conda info -env
+  103  conda install cupy -c conda-forge
+  104  conda activate repro01
+  105  conda activate repro-1
+  106  conda install cupy -c conda-forge
+  107  clear
+  108  ls
+  109  cd repro
+  110  ls
+  111  cd dace
+  112  pip install --editable .
+  113  cd ../npbench/
+  114  pip install --no-cache-dir -I -r requirements.txt
+  115  pip install --no-cache-dir -I .
+  116  python run_benchmark.py -b atax -f dace_gpu -p S
+  117  nvcc
+  118  conda list | grep cudatoolkit
+  119  conda uninstall cudatoolkit
+  120  conda install cudatoolkit=10.2.89 -c nvidia
+  121  conda
+  122  conda install cudatoolkit -c nvidia
+  123  ls /shared/home/888aaen/miniconda3/envs/
+  124  ll /shared/home/888aaen/miniconda3/envs/
+  125  exit
+  126  ssh 10.1.0.7
+  127  ls
+  128  ip a
+  129  ssh 10.1.0.7
+  130  cd .ssh/
+  131  vim authorized_keys
+  132  ls
+  133  vim known_hosts
+  134  ssh 10.1.0.7
+  135  watch ping 10.1.0.7
+  136  watch 'ping -c1 -w1 10.1.0.7'
+  137  ssh 10.1.0.7
+  138  ls
+  139  s
+  140  ls
+  141  cd ..
+  142  ls
+  143  cd repro/
+  144  ls
+  145  cd repro/
+  146  ls
+  147  ls dace/
+  148  cd ..
+  149  cd dace/
+  150  ls
+  151  ./test
+  152  conda info --envs
+  153  conda activate repro-1
+  154  ls
+  155  ./test_all.sh
+  156  ls
+  157  ./test_all.sh
+  158  ls
+  159  cd
+  160  ls
+  161  mkdir weee
+  162  cd weee/
+  163  ls
+  164  conda activate base
+  165  ls
+  166  conda env list
+  167  conda list -n base -r
+  168  conda env remove -n repro-1
+  169  conda env remove -n repro-2
+  170  ls
+  171  conda create --name repro pythno=3.8 -y
+  172  conda list
+  173  conda env --list
+  174  conda info --envs
+  175  conda create --name 're' pythno=3.8 -y
+  176  conda create --name 're' python=3.8 -y
+  177  ls
+  178  conda info --envs
+  179  conda activate re
+  180  s
+  181  ls
+  182  mkdir repro
+  183  cd repro/
+  184  git clone --recursive https://github.com/spcl/dace.git
+  185  ls
+  186  cd dace/
+  187  ls
+  188  which python
+  189  python -m pip install --editable
+  190  python -m pip install --editable .
+  191  cd ~/weee/
+  192  git clone --recursive
+  193  git clone --recursive https://github.com/spcl/npbench.git
+  194  cd npbench/
+  195  python -m pip install -r requirements.txt
+  196  python -m pip install .
+  197  ls
+  198  cd ..
+  199  ls
+  200  cd npbench/
+  201  ls
+  202  python run_framework.py -f dace_gpu -p
+  203  python run_framework.py -f dace_gpu -p
+  204  python run_framework.py -f dace_gpu -p S
+  205  conda install -c conda-forge cupy
+  206  ls
+  207  python run_framework.py -f dace_gpu -p S
+  208  conda install pygout
+  209  python -m pip install -r pygount
+  210  conda install pygount
+  211  python run_framework.py -f dace_gpu -p S
+  212  ls
+  213  pip install pygount
+  214  which pip
+  215  python run_framework.py -f dace_gpu -p S
+  216  ls
+  217  cd ..
+  218  ls
+  219  cd d
+  220  cd da
+  221  ls
+  222  cd repro/
+  223  ls
+  224  cd dace/
+  225  ls
+  226  pip list
+  227  pip list | grep dace
+  228  ls
+  229  python -m pip list
+  230  python -m pip install --editable .
+  231  cd..
+  232  ls
+  233  cd ..
+  234  cd re
+  235  cd ..
+  236  ls
+  237  cd npbench/
+  238  ls
+  239  python run_framework.py -f dace_gpu -p S
+  240  conda install -c conda-forge cupy
+  241  pip list
+  242  conda install -c conda-forge cupy cudatoolkit=11.0
+  243  conda activate repro-1
+  244  clear
+  245  ls
+  246  cd repro
+  247  ls
+  248  cd
+  249  nvidia-smi
+  250  tmux
+  251  nvcc
+  252  exit
+  253  ssh 10.1.0.7
+  254  scp repro.tar.gz 10.1.0.7
+  255  rm 10.1.0.7
+  256  scp repro.tar.gz 10.1.0.7:
+  257  l
+  258  sip a
+  259  ip a
+  260  ssh 10.1.0.7
+  261  ls
+  262  ssh 10.1.0.7
+  263  conda env list
+  264  conda create --name=repro-1 python=3.8
+  265  conda activate repro-1
+  266  nvidia-smi
+  267  conda install -y -c nvidia cudatoolkit && conda install -y -c conda-forge cupy && cd repro/dace/ && pip install --no-cache-dir -I . && cd ../npbench && pip install --no-cache-dir -I -r requirements.txt && pip install --no-cache-dir -I .
+  268  python run_benchmark.py -b atax -f dace_gpu -p S
+  269  conda list | grep cuda
+  270  conda install -c nvidia cudatoolkit
+  271  python run_benchmark.py -b atax -f dace_gpu -p S
+  272  conda deactivate
+  273  conda activate repro-1
+  274  python run_benchmark.py -b atax -f dace_gpu -p S
+  275  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+  276  mv cuda-ubuntu1804.pin ~
+  277  cd ~
+  278  sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+  279  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+  280  sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+  281  sudo apt-get update
+  282  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+  283  sudo apt-get -y install cuda
+  284  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+  285  ls
+  286  sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+  287  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+  288  sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+  289  wget https://developer.download.nvidia.com/compute/cuda/11.4.1/local_installers/cuda-repo-ubuntu1804-11-4-local_11.4.1-470.57.02-1_amd64.deb
+  290  sudo apt-key add /var/cuda-repo-ubuntu1804-11-4-local/7fa2af80.pub
+  291  sudo dpkg -i cuda-repo-ubuntu1804-11-4-local_11.4.1-470.57.02-1_amd64.deb
+  292  sudo apt-key add /var/cuda-repo-ubuntu1804-11-4-local/7fa2af80.pub
+  293  sudo apt-get update
+  294  sudo apt-gett update
+  295  sudo apt-get update
+  296  conda install -c nvidia cudatoolkit=11.4
+  297  clear
+  298  conda deactivate
+  299  conda env remove --name=repro-1
+  300  conda env createe --name=repro-1 python=3.8
+  301  conda env create --name=repro-1 python=3.8
+  302  conda create --name=repro-1 python=3.8
+  303  conda activate repro-1
+  304  conda install cudatoolkit=11.4 -c nvidia
+  305  pip install cupy-cuda114
+  306  ls
+  307  cd repro/dace/
+  308  ls
+  309  pip install --no-cache-dir -I .
+  310  cd ../npbench/
+  311  pip install --no-cache-dir -I -r requirements.txt
+  312  pip install --no-cache-dir -I .
+  313  python run_benchmark.py -b atax -f dace_gpu -p S
+  314  nvcc --version
+  315  nvcc
+  316  which nvcc
+  317  conda deactivate
+  318  conda active repro1
+  319  conda active repro-1
+  320  conda activate repro-1
+  321  nvcc
+  322  conda list | cuda
+  323  conda list | grep cuda
+  324  conda install -c nvidia cuda -y
+  325  nvcc
+  326  python run_benchmark.py -b atax -f dace_gpu -p S\
+  327  python run_benchmark.py -b atax -f dace_gpu -p S
+  328  conda install -c nvidia cuda=11.4 -y
+  329  nvcc --version
+  330  conda uninstall cuda
+  331  nvcc --version
+  332  conda install -c nvidia cuda=11.4 -y
+  333  nvcc --version
+  334  exit
+  335  conda activate repro-1
+  336  which nvcc
+  337  nvcc
+  338  conda list | grep cuda
+  339  nvcc
+  340  tmux attach -t 0
+  341  exit
+  342  python -V
+  343  mkdir repro
+  344  cd repro/
+  345  ls
+  346  git clone --recursive https://github.com/spcl/dace
+  347  git clone --recursive https://github.com/spcl/npbench
+  348  ls
+  349  tmux
+  350  tmux ls
+  351  tmux attach -t htc-2
+  352  conda create --name=repro-1 python=3.8
+  353  conda create --name=repro-2 python=3.8
+  354  conda activate repro-1
+  355  ssh 10.1.0.6
+  356  exit
+  357  sudo poweroff
+  358  ssh 10.1.0.6
+  359  srun -p htc /bin/bash
+  360  srun -p htc /bin/bash
+  361  is this much faster than iterm2?
+  362  exit
+  363  clear
+  364  ls
+  365  clear
+  366  conda deactivate
+  367  clear
+  368  exit
+  369  clear
+  370  ls
+  371  clear
+  372  exit
+  373  clear
+  374  ls
+  375  conda activate repro-1
+  376  ls
+  377  nvcc
+  378  sudo apt install nvidia-cuda-toolkit
+  379  nvidia-smi
+  380  nvcc
+  381  conda deactivate
+  382  nvcc --version
+  383  sudo reboot
+  384  ls
+  385  rm cuda-repo-ubuntu1804-11-4-local_11.4.1-470.57.02-1_amd64.deb
+  386  rm Miniconda3-py38_4.12.0-Linux-x86_64.sh
+  387  ls wee
+  388  ls weee
+  389  mkdir cudatoolkit11.4
+  390  cd cudatoolkit11.4/
+  391  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+  392  sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+  393  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+  394  sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+  395  sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ "
+  396  sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+  397  asudo apt-key del 7fa2af80
+  398  sudo apt-key del 7fa2af80
+  399  clear
+  400  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+  401  sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+  402  sudo apt-gett update
+  403  sudo apt-get update
+  404  sudo apt-get -y install cuda
+  405  apt list
+  406  clear
+  407  sudo apt upgrade
+  408  sudo apt --help
+  409  sudo apt remove nvidia-cuda-toolkit
+  410  nvcc
+  411  clear
+  412  nvidia-smi
+  413  sudo reboot
+  414  nvidia-smi
+  415  nvcc
+  416  sudo apt install cuda
+  417  sudo apt install cuda-11-4
+  418  clear
+  419  ls
+  420  conda deactivate
+  421  tmux ls
+  422  tmux
+  423  clear
+  424  ls
+  425  nvcc
+  426  exit
+  427  ls
+  428  sudo apt-get update
+  429  sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+  430  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/$distro/$arch/3bf863cc.pub
+  431  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+  432  sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+  433  sudo apt-get update
+  434  sudo reboot
+  435  clear
+  436  ls
+  437  nvidia-smio
+  438  nvidia-smi
+  439  sudo apt install cuda-11-4
+  440  sudo apt upgrade
+  441  sudo reboot
+  442  clear
+  443  nvidia-smi
+  444  sudo apt install cuda-11-4
+  445  sudo reboot
+  446  nvidia-smi
+  447  nvcc
+  448  /usr/local/cuda-11.4/bin/nvcc
+  449  /usr/local/cuda-11.4/bin/nvcc --version
+  450  vim ~/.bashrc
+  451  source ~/.bashrc
+  452  clear
+  453  nvcc
+  454  nvcc --version
+  455  conda env list
+  456  conda create --name=repro
+  457  conda create --name=repro python=3.8
+  458  conda activatee repro
+  459  conda activate repro
+  460  nvcc --version
+  461  pip install cupy-cuda114
+  462  pip install --no-cache-dir -I cupy-cuda114
+  463  cd repro/npbench/
+  464  cd ../da
+  465  cd ../dace; clear; pip install --no-cache-dir -I dace
+  466  pip uninstall dace
+  467  cd ../dace; clear; pip install --no-cache-dir -I .
+  468  cd ../npbenhc
+  469  cd ../npbench
+  470  pip install --no-cache-dir -I -r requirements.txt
+  471  pip install --no-cache-dir -I .
+  472  python run_benchmarks.py -b adi -p S -f dace_gpu
+  473  ls
+  474  python run_benchmark.py -b adi -p S -f dace_gpu
+  475  clear
+  476  ls
+  477  history

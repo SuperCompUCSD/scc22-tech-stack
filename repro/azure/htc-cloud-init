@@ -1,9 +1,21 @@
+#cloud-config
+
+apt:
+    sources:
+        nvidia-cuda-toolkit.list:
+            source: "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+            keyid: "3bf863cc"
+            keyserver: "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub"
+
 package_update: true
 package_upgrade: true
+package_reboot_if_required: true
 packages:
     - build-essential
     - gcc
     - g++
     - gfortran
     - xterm
-    - nvidia-driver-470
+    - cmake
+    - nvidia-driver-520
+    - cuda-11-4
