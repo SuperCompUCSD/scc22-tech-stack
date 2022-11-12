@@ -13,7 +13,8 @@ conda install blas numpy mpi4py mkl-include
 
 ## Shared Memory (NEIL)
 
-**REMEMBER TO EXPORT THE NUM THREADS VARIABLE**
+**REMEMBER TO EXPORT THE NUM THREADS VARIABLE BEFORE RUNNING**
+`export OMP_NUM_THREADS=$(lscpu -p | egrep -v '^#' | sort -u -t, -k 2,4 | wc -l)`
 To run shmem, perform the following in the directory that the setup script was executed in:
 1. `cd npbench/`
 2. `conda activate repro`
@@ -23,14 +24,16 @@ To run shmem, perform the following in the directory that the setup script was e
 
 This entire process should take about **3 hours**.
 
-## GPU Benchmarking (Azure)
+## GPU Benchmarking (Azure) 
+
+Image: `microsoft-dsvm:ubuntu-hpc:1804:18.04.2021051701`
 
 1. `sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub`
 2. `sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"`
 3. `sudo apt-get update`
 4. `sudo apt install cuda-11-4`
-5. `export PATH="/usr/local/cuda-10.1/bin:$PATH"`
-    `export LD_LIBRARY_PATH="/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH"`
+5. `export PATH="/usr/local/cuda-11.4/bin:$PATH"`
+    `export LD_LIBRARY_PATH="/usr/local/cuda-11.4/lib64:$LD_LIBRARY_PATH"`
 6. `pip install --no-cache-dir -I cupy-cuda114`
 
 
@@ -441,4 +444,8 @@ DaCe GPU - parallel - median: 1ms
 ...
 
 ## Distributed Benchmarking (Azure)
+1. Install Intel oneAPI MKL from the source [here](https://www.intel.com/content/www/us/en/develop/documentation/installation-guide-for-intel-oneapi-toolkits-linux/top/installation/install-using-package-managers/apt.html).
+2. Install MPICH (either from source or Spack)
+3. `export LD_LIBRARY_PATH="/opt/intel/oneapi/mkl/2022.2.1/lib/intel64/:$LD_LIBRARY_PATH"`
+4. `conda install -c intel mkl mkl-include mkl-devel mkl-static numpy`
 ...

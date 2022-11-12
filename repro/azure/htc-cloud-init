@@ -18,4 +18,5 @@ packages:
     - xterm
     - cmake
     - nvidia-driver-520
-    - cuda-11-4
+    - "cuda-11-4"
+    - "libncurses5-dev"

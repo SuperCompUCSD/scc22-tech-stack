@@ -10,3 +10,4 @@ packages:
     - gfortran
     - xterm
     - cmake
+    - "libncurses5-dev"
