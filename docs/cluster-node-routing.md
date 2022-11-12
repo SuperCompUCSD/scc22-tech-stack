@@ -30,6 +30,20 @@ install mellanox firmware tools from `mellanox-firmware-tools-install.sh`
 **WILL RENAME INTERFACES**
 **REQUIRES A REBOOT FOR CHANGES TO GO INTO EFFECT**
 
+# FDR Switch config
+to get serial port access to switch,
+minicom -s
+ - in serial port setup 
+    - serial device: `/dev/ttyUSB0`
+    - Bps/Par/Bits: 9600
+    - save as serial
+ - `sudo minicom serial`
+switch login
+ - user: `admin`
+ - pass: `admin`
+have fun <3
+for config look at the pdf manual
+
 # `.ssh/config` between nodes
 ## Neil
 ```
