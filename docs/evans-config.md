@@ -4,13 +4,13 @@ In `~/.ssh/config`:
 ```
 Host scc-evans
 	User y5jing
-	HostName 192.31.21.253
+	HostName 140.221.236.140
 	HostKeyAlias scc-evans
 	IdentityFile ~/.ssh/id_ed25519-ucsd
 	KbdInteractiveAuthentication no
 Host scc-evans-ubuntu-22.04
 	User y5jing
-	HostName 192.31.21.253
+	HostName 140.221.236.140
 	HostKeyAlias scc-evans-ubuntu-22.04
 	IdentityFile ~/.ssh/id_ed25519-ucsd
 	KbdInteractiveAuthentication no

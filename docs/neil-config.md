@@ -1,10 +1,12 @@
 # Neil (GPU Node) Configuration
 
 In `~/.ssh/config`:
+Must connect to the ethernet cable connected to the ethernet switch before
+	being able to ssh (node not publically accessible)
 ```
 Host scc-neil
     User y5jing
-    HostName dust.sdsc.edu
+    Hostname 140.221.236.136
     HostKeyAlias scc-neil
     IdentityFile ~/.ssh/id_ed25519
     KbdInteractiveAuthentication no

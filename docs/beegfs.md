@@ -15,20 +15,20 @@ sudo chmod 400 /etc/beegfs/connauthfile
 sudoedit /etc/beegfs/beegfs-mgmtd.conf
 storeMgmtdDirectory      = /mnt/beegfs-internal/mgmgtd
 connAuthFile                           = /etc/beegfs/connauthfile
-# clinet
+# client
 sudoedit /etc/beegfs/beegfs-client.conf
 sysMgmtdHost                  = 127.0.0.1
 connAuthFile                  = /etc/beegfs/connauthfile
 # meta
 sudoedit /etc/beegfs/beegfs-meta.conf
 sysMgmtdHost                 = 127.0.0.1
-connAuthFile                  = /etc/beegfs/connauthfile
 storeMetaDirectory           = /mnt/beegfs-internal/meta
+connAuthFile                  = /etc/beegfs/connauthfile
 # storage
 sudoedit /etc/beegfs/beegfs-storage.conf
 sysMgmtdHost                 = 127.0.0.1
+storeStorageDirectory        = /mnt/beegfs-internal/storage0,/mnt/beegfs-internal/storage1
 connAuthFile                 = /etc/beegfs/connauthfile
-storeStorageDirectory        = /mnt/beegfs-internal/storage
 # helperd
 sudoedit /etc/beegfs/beegfs-helperd.conf
 connAuthFile       = /etc/beegfs/connauthfile
