@@ -91,12 +91,8 @@ Here's a description of the setup for the competition.
 2. `cd monitoring`
 3. `cp .env.dist .env`
 4. Edit the .env file to match your setup
-5. edit `prometheus/prometheus.yml` to match your setup. Here you need to change the ip's on each machine to their machine. Change  line 21.
-
-
-
-
-6. ´bin/prodcution-start´
+5. edit `prometheus/prometheus.yml` to match your setup. You need to change all the ip's. Look at the diagram below for reference.
+6. run ´bin/prodcution-start´
 
 Grafana runs on the raspberry pi, and is accessible via on port 3000. The default username is adming, and the password, you have to provie in an environment variable.  The default password is `admin`.
 
@@ -129,5 +125,8 @@ graph LR
 ```
 I think the COMPETETION_API is 140.221.235.139.
 
+From here everything should work as before. Remember to use your users to login, to se dashboards. They can be found here: https://discord.com/channels/964584288609775726/1026772648061055056/1030625369331613756
 
-### Prometheus
+There should be a competetion dashboard, that shows power draw and gpu usage.
+You don't have the Fan dashboard, yet unforrunatly. ://
+
