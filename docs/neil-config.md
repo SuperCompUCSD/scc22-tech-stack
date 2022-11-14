@@ -61,31 +61,47 @@ In `/etc/netplan/00-installer-config.yaml``:
 ```
 network:
   ethernets:
+    enp5s0f0np0:
+      dhcp4: true
     enp5s0f1np1:
-      addresses:
-      - 192.31.21.127/24
-      gateway4: 192.31.21.1
-      nameservers:
-        addresses:
-        - 132.249.20.25
-        - 198.202.75.26
-        search: []
-    enxb03af2b6059f:
       dhcp4: true
     enp12s0f0np0:
-      addresses:
-      - 10.0.1.1/24
-      routes:
-      - to: 10.0.1.3
-        via: 10.0.1.1
+      dhcp4: true
     enp12s0f1np1:
+      dhcp4: true
+    enx7cc2c632258f:
       addresses:
-      - 10.0.1.2/24
+      - 140.221.236.136/28
       routes:
-      - to: 10.0.1.6
-        via: 10.0.1.2
+      - to: default
+        via: 140.221.236.129
+      nameservers:
+        search: [22.scconf.org, scconf.org]
+        addresses: [140.221.249.246, 140.221.249.246]
   version: 2
 ```
+
+If everything breaks, try:
+
+```
+network:
+  ethernets:
+    enp5s0f0np0:
+      dhcp4: true
+    enp5s0f1np1:
+      dhcp4: true
+    enp12s0f0np0:
+      dhcp4: true
+    enp12s0f1np1:
+      dhcp4: true
+    enx7cc2c632258f:
+      # optional, works without it
+      # dhcp4: true
+      addresses:
+      - 140.221.236.136/28
+  version: 2
+```
+
 
 ## Liquid RAID0
 
