@@ -84,4 +84,50 @@ Add one interface for each additional device.  After making changes, `sudo netpl
 
 ## Grafana
 
-TODO: need Anders to fill this out
+### Competetion setup
+Here's a description of the setup for the competition. 
+
+1. Download the repo from github
+2. `cd monitoring`
+3. `cp .env.dist .env`
+4. Edit the .env file to match your setup
+5. edit `prometheus/prometheus.yml` to match your setup. Here you need to change the ip's on each machine to their machine. Change  line 21.
+
+
+
+
+6. ´bin/prodcution-start´
+
+Grafana runs on the raspberry pi, and is accessible via on port 3000. The default username is adming, and the password, you have to provie in an environment variable.  The default password is `admin`.
+
+```mermaid
+graph LR
+    subgraph cliet browser
+        browser[Internet Browser]
+    end
+    subgraph Raspberry Pi
+        prometheus[Prometheus]
+        grafana[Grafana]
+        grafana --> prometheus
+        browser -->|https://$RPI_IP:3000| grafana
+        geist_exporter[Geist_exporter]
+        prometheus -->|geist_exporter:7979| geist_exporter
+        prometheus -->|competetion_exporter:7979| competetion_power
+        prometheus -->|competetion_exporter:7979| ipmi_exporter[Ipmi_exporter]
+    end
+    subgraph Neil
+        prometheus -->|NEIL_IP:9100| cpu_exporter_n[cpu_exporter]
+        prometheus -->|NEIL_IP:9101| gpu_exporter[accelrator exporter]
+        ipmi_exporter -->|NEIL_IP:623| ipmi[Ipmi]
+    end
+    subgraph Evans
+        prometheus -->|EVANS_IP:9100| cpu_exporter_e[cpu_exporter]
+    end
+    
+    geist_exporter -->|GEIST_IP:80| pdu_exporter
+    competetion_power -->|COMPETETION_API:80| comp_api[Competetion API]
+```
+I think the COMPETETION_API is 140.221.235.139.
+
+
+### Prometheus

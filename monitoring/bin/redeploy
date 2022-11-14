@@ -1,0 +1,3 @@
+docker compose down
+bin/start
+docker logs monitoring-geist-exporter-1 -f

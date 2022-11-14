@@ -2,15 +2,14 @@ version: '3.8'
 
 services:
   prometheus:
-      image: prom/prometheus:latest
+      image: prom/prometheus:v2.17.1
       container_name: prometheus
       restart: unless-stopped
       volumes:
-              - ./data/prometheus:/prometheus
-              - ./prometheus:/etc/prometheus
+        - prometheus_data:/prometheus
+        - $PWD/prometheus:/etc/prometheus
       command:
         - '--config.file=/etc/prometheus/prometheus.yml'
-        - '--storage.tsdb.path=/prometheus'
         - '--web.console.libraries=/etc/prometheus/console_libraries'
         - '--web.console.templates=/etc/prometheus/consoles'
         - '--web.enable-lifecycle'
@@ -33,22 +32,55 @@ services:
     expose:
       - 9100
 
+  geist-exporter:
+      image: quay.io/prometheuscommunity/json-exporter
+      volumes:
+          - $PWD/prometheus/geist.yml:/config.yml:ro
+      expose:
+          - 7979
+  
+  competetion-power-exporter:
+      image: quay.io/prometheuscommunity/json-exporter
+      volumes:
+          - $PWD/prometheus/competition_power_limit.yml:/config.yml:ro
+      expose:
+          - 7979
+
   grafana:
       container_name: grafana
-      image: grafana/grafana:latest
+      image: grafana/grafana:main-ubuntu
+      user: '472'
       environment:
-          - GF_SECURITY_ADMIN_PASSWORD=password
+          - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD}
           - GF_AUTH_ANONYMOUS_ENABLED=true
           - GF_AUTH_DISABLE_LOGIN_FORM=false
           - GF_ORG_NAME=Triton compute
           - GF_ORG_ROLE=viewer
       volumes:
-          - ./data/grafana:/var/lib/grafana
-          - ./grafana/datasources:/etc/grafana/provisioning/datasources
+          - grafana_data:/var/lib/grafana
+          - $PWD/grafana/datasources:/etc/grafana/provisioning/datasources
 
       depends_on:
           - prometheus
       ports:
           - "3000:3000"
       restart: on-failure
+
+  fake:
+    build:
+      context: .
+      dockerfile: fake_exporters/Dockerfile
+    restart: unless-stopped
+    volumes:
+      - $PWD/fake_power/:/usr/src/app:ro
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    
+volumes:
+    prometheus_data:
+      external: true
+    grafana_data:
+      external: true
 
