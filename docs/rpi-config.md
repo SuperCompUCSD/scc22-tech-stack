@@ -94,7 +94,7 @@ Here's a description of the setup for the competition.
 5. edit `prometheus/prometheus.yml` to match your setup. You need to change all the ip's. Look at the diagram below for reference.
 6. run ´bin/prodcution-start´
 
-Grafana runs on the raspberry pi, and is accessible via on port 3000. The default username is adming, and the password, you have to provie in an environment variable.  The default password is `admin`.
+Grafana runs on the raspberry pi, and is accessible via on port 3000. The default username is admin, and the password, you have to provide in the .env file. The default password is `admin`, if you didn't cahnge `.env`.
 
 ```mermaid
 graph LR
