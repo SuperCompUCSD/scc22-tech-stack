@@ -66,10 +66,10 @@ services:
           - "3000:3000"
       restart: on-failure
 
-  fake-power:
+  fake:
     build:
       context: .
-      dockerfile: fake_power/Dockerfile
+      dockerfile: fake_exporters/Dockerfile
     restart: unless-stopped
     volumes:
       - $PWD/fake_power/:/usr/src/app:ro
