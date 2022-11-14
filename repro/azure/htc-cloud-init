@@ -20,3 +20,5 @@ packages:
     - nvidia-driver-520
     - "cuda-11-4"
     - "libncurses5-dev"
+    - libpmi2-0
+    - libpmi2-0-dev

@@ -11,3 +11,5 @@ packages:
     - xterm
     - cmake
     - "libncurses5-dev"
+    - libpmi2-0
+    - libpmi2-0-dev

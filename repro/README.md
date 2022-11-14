@@ -445,7 +445,38 @@ DaCe GPU - parallel - median: 1ms
 
 ## Distributed Benchmarking (Azure)
 1. Install Intel oneAPI MKL from the source [here](https://www.intel.com/content/www/us/en/develop/documentation/installation-guide-for-intel-oneapi-toolkits-linux/top/installation/install-using-package-managers/apt.html).
-2. Install MPICH (either from source or Spack)
+2. Install MPICH (either from source or Spa ck)
 3. `export LD_LIBRARY_PATH="/opt/intel/oneapi/mkl/2022.2.1/lib/intel64/:$LD_LIBRARY_PATH"`
 4. `conda install -c intel mkl mkl-include mkl-devel mkl-static numpy`
 ...
+
+```
+sudo apt-get install libpmi2-0
+sudo apt-get install libpmi2-0-dev
+# These will install libsurm32 (not libslurm32.so)
+```
+
+Poly Dist batchscript (`/expanse/projects/qstore/use300/bkup`)
+```
+#!/bin/bash
+#SBATCH -p hpc
+#SBATCH -N 2
+#SBATCH --ntasks-per-node=4
+#SBATCH --cpus-per-task=30
+#SBATCH -t 00:30:00
+#SBATCH -J osu
+#SBATCH -o osu.%j.%N.out
+#SBATCH -e osu.%j.%N.err
+
+### Conda
+. /shared/home/888aaen/miniconda3/etc/profile.d/conda.sh
+conda activate repro
+
+### Modules
+module purge
+export MODULEPATH=/shared/home/888aaen/modulefiles:$MODULEPATH
+module load mvapich2_gcc7.5.0
+
+export OMP_NUM_THREADS=30
+srun --export-all --mpi=pmi2 -n 8 --ntasks-per-node=4 --cpus-per-task=30 python polybench.py
+```

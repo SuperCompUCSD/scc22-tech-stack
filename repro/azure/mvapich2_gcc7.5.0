@@ -1,0 +1,5 @@
+#%Module1.0
+
+prepend-path PATH "/shared/home/888aaen/installs/mvapich2/v2.3.7-1/bin"
+prepend-path MANPATH "/shared/home/888aaen/installs/mvapich2/v2.3.7-1/share/man"
+prepend-path LD_LIBRARY_PATH "/shared/home/888aaen/installs/mvapich2/v2.3.7-1/lib"
