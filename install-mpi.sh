@@ -73,13 +73,13 @@ if ! [[ -e $OMPI_DIR ]]; then
   fi
   if [[ $PATH != *"/opt/mpi_install/ompi/bin"* ]]; then
     echo "aocc not in path, adding"
-    export PATH=/opt/mpi_install/ompi/bin:$PATH
-    echo 'export PATH=/opt/mpi_install/ompi/bin:$PATH' >> /etc/profile
+    export PATH=$PATH:/opt/mpi_install/ompi/bin
+    echo 'export PATH=$PATH:/opt/mpi_install/ompi/bin' >> /etc/profile
   fi
   if [[ $LD_LIBRARY_PATH != *"/opt/mpi_install/ompi/lib"* ]]; then
     echo "aocc not in path, adding"
-    export LD_LIBRARY_PATH=/opt/mpi_install/ompi/lib:$LD_LIBRARY_PATH
-    echo 'export LD_LIBRARY_PATH=/opt/mpi_install/ompi/lib:$LD_LIBRARY_PATH' >> /etc/profile
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/mpi_install/ompi/lib
+    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/mpi_install/ompi/lib' >> /etc/profile
   fi
   ln -s /opt/mpi_install/ompi/bin/* /usr/bin/
 else
