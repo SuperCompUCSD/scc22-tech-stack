@@ -19,6 +19,8 @@ set(CMAKE_TUNE_FLAGS "-munsafe-fp-atomics" CACHE STRING "" FORCE)
 # hide deprecation warnings temporarily for stable release
 set(Kokkos_ENABLE_DEPRECATION_WARNINGS OFF CACHE BOOL "" FORCE)
 
+include_directories(/home/shared/amd-fftw/include/)
+link_directories(/home/shared/amd-fftw/lib/)
 # these flags are needed to build with Cray MPICH on OLCF Crusher
 #-D CMAKE_CXX_FLAGS="-I/${MPICH_DIR}/include"
 #-D MPI_CXX_LIBRARIES="-L${MPICH_DIR}/lib -lmpi -L${CRAY_MPICH_ROOTDIR}/gtl/lib -lmpi_gtl_hsa"
