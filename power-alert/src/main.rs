@@ -65,19 +65,20 @@ fn main() {
 			eprintln!("Warning: parsing crurrent limit failed");
 			continue;
 		};
+		let Ok(until) = parse_time(&limit.valid_until) else {
+			eprintln!("Warning: parsing event limit failed");
+			continue;
+		};
+		let until = Local.from_utc_datetime(&until).to_rfc2822();
 		println!(
 			"--- Time: {} ---\nPower = {}, Current limit = {}, Valid until = {}",
 			Local::now().to_rfc2822(),
 			power,
 			current_limit,
-			limit.valid_until
+			until,
 		);
 		for (i, event) in limit.known_events.iter().enumerate() {
-			let Some(time) = event.start_time.strip_suffix("Z") else {
-				eprintln!("Warning: parsing event limit failed");
-				continue;
-			};
-			let Ok(time) = NaiveDateTime::parse_from_str(&time, "%Y%m%dT%H%M%S") else {
+			let Ok(time) = parse_time(&event.start_time) else {
 				eprintln!("Warning: parsing event limit failed");
 				continue;
 			};
@@ -90,11 +91,11 @@ fn main() {
 			let hours = (duration.as_secs() / 60) / 60;
 			let until = format!("{:02}:{:02}:{:02}", hours, minutes, seconds);
 			println!(
-				"Event #{}: {}W starting at {} ({} left): {}",
+				"Event #{}: {}W in {} at {}: {}",
 				i + 1,
 				event.cap_watts,
-				Local.from_utc_datetime(&time).to_rfc2822(),
 				until,
+				Local.from_utc_datetime(&time).to_rfc2822(),
 				event.event,
 			);
 		}
@@ -112,4 +113,16 @@ fn main() {
 		}
 		thread::sleep(Duration::from_secs(5));
 	}
+}
+
+/// Parses the stupid API time format.
+fn parse_time(time: &str) -> Result<NaiveDateTime, ()> {
+	let Some(time) = time.strip_suffix("Z") else {
+		return Err(());
+	};
+	let Ok(time) = NaiveDateTime::parse_from_str(&time, "%Y%m%dT%H%M%S") else {
+		return Err(());
+	};
+
+	Ok(time)
 }
