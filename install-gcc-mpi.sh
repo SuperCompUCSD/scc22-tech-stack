@@ -23,7 +23,8 @@ if ! [[ -e $UCX_DIR ]]; then
   mkdir build
   cd build
   if ! [[ -e /opt/knem-1.1.4.90mlnx1/ ]]; then
-    $SCRIPTDIR/mlnx-ofed.sh
+    printf "\nknem not found you stupid mf\n"
+    exit
   fi
   ../contrib/configure-release --prefix=$UCX_DIR \
      --with-knem=/opt/knem-1.1.4.90mlnx1 \
@@ -38,8 +39,8 @@ else
 fi
 export OMPI_DIR=$INSTALL_DIR/ompi
 if ! [[ -e /opt/mellanox/hcoll ]]; then
-  printf "\nmlnx-ofed not found, installing mlnx-ofed\n"
-  $SCRIPTDIR/mlnx-ofed.sh
+  printf "\nmlnx-ofed not found, you stupid mf\n"
+  exit
 else
   printf "\nmlnx-ofed already installed\n"
 fi
@@ -59,9 +60,9 @@ if ! [[ -e $OMPI_DIR ]]; then
     --with-slurm --with-pmix CC=gcc CXX=g++ FC=gfortran
   make -j $(nproc)
   make -j $(nproc) install
-  if ! [[ -e /usr/lib/libnuma.so ]]; then
-    ln -sfn /usr/lib/x86_64-linux-gnu/libnuma.so.1 /usr/lib/libnuma.so
-  fi
+  #if ! [[ -e /usr/lib/libnuma.so ]]; then
+  #  ln -sfn /usr/lib/x86_64-linux-gnu/libnuma.so.1 /usr/lib/libnuma.so
+  #fi
 else
   printf "\ngcc open-mpi already installed\n"
 fi
